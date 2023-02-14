@@ -18,7 +18,7 @@ If this repository could help you, please cite the following paper:
 ```
 
 ## Overview
-We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficuty of Text-to-SQL. More details can be found in our [paper](). All experiments are conducted on a single NVIDIA A100 80G GPU.
+We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficuty of Text-to-SQL. More details can be found in our [paper](https://arxiv.org/abs/2302.05965). All experiments are conducted on a single NVIDIA A100 80G GPU.
 
 ## Evaluation Results
 We evaluate RESDSQL on four datasets: Spider, Spider-DK, Spider-Syn, and Spider-Realistic. Let's look at the following numbers:
