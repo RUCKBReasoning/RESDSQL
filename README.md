@@ -4,14 +4,14 @@
     <br>
 <p>
 
-# Decoupling the Skeleton Parsing and Schema Linking for Text-to-SQL
-This is the official implementation of the paper "Decoupling the Skeleton Parsing and Schema Linking for Text-to-SQL" (AAAI 2023).
+# RESDSQL: Decoupling Schema Linking and Skeleton Parsing for Text-to-SQL
+This is the official implementation of the paper "RESDSQL: Decoupling Schema Linking and Skeleton Parsing for Text-to-SQL" (AAAI 2023).
 
 If this repository could help you, please cite the following paper:
 ```
 @inproceedings{li2022resdsql,
   author = {Haoyang Li and Jing Zhang and Cuiping Li and Hong Chen},
-  title = "Decoupling the Skeleton Parsing and Schema Linking for Text-to-SQL",
+  title = "RESDSQL: Decoupling Schema Linking and Skeleton Parsing for Text-to-SQL",
   booktitle = "AAAI",
   year = "2023"
 }
