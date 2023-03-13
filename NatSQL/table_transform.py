@@ -15,7 +15,6 @@ def construct_hyper_param():
     parser.add_argument("--out_file", default='', type=str, help="output table.json")
     parser.add_argument("--star_type", default='others', type=str,
                         help="what type of * in column type?")
-
     parser.add_argument('--table_transform', action='store_true', default=False)
 
     parser.add_argument('--seperate_col_name', action='store_true', default=False)
@@ -47,6 +46,8 @@ def construct_hyper_param():
 
     parser.add_argument('--correct_primary_keys', action='store_true', default=False) 
 
+    parser.add_argument('--db_path', default='./database', type=str)
+    
     args = parser.parse_args()
     return args
 
@@ -534,12 +535,12 @@ def create_mini_network(network,table):
     return network
 
 
-def re_identify_boolean_type(tables,use_extra_col_types):
+def re_identify_boolean_type(tables,use_extra_col_types,database_path):
     for db_i,table in enumerate(tables):
         print()
         print(tables[db_i]['db_id'] + " " + str(db_i))
         try:
-            db_ = DBEngine(table)
+            db_ = DBEngine(table,database_path)
         except:
             continue
         
@@ -646,7 +647,7 @@ def unifie_words(tables):
     return tables
 
 
-def analyse_same_column(tables,schemas):
+def analyse_same_column(tables,schemas,database_path):
     def they_are_same(col_1_idx,col_2_idx,table,schema,all_pair,db_):
         def contain_table_name(col_1_idx,col_2_idx,table,schema):
             for ttls in schema.table_tokens_lemma_str[schema.column_names_original[col_1_idx][0]].split(" "):
@@ -694,7 +695,7 @@ def analyse_same_column(tables,schemas):
         same_col_idxs = []
         all_pair = []
         try:
-            db_ = DBEngine(table)
+            db_ = DBEngine(table,database_path)
         except:
             db_ = None
         for i,col in enumerate(table["column_names"]):
@@ -743,13 +744,13 @@ def add_line_break(sql):
     sql = sql[:sql.rfind(")")] + "\n" + sql[sql.rfind(")"):]
     return sql
 
-def correct_primary_keys(tables,schemas):
+def correct_primary_keys(tables,schemas,database_path):
     for it, table,schema in zip(range(len(tables)),tables,schemas):
         table['original_primary_keys'] = copy.deepcopy(table['primary_keys'])
         same_col_idxs = []
         all_pair = []
         try:
-            db_ = DBEngine(table)
+            db_ = DBEngine(table,database_path)
             db_infos = db_.get_db_structure_info()
         except:
             db_ = None
@@ -823,10 +824,10 @@ def correct_primary_keys(tables,schemas):
                                 print("EEEEE")
 
 
-def label_disjoint_tables(tables):
+def label_disjoint_tables(tables,database_path):
     for it, table in enumerate(tables):
         table['unique_fk'] = []
-        db_ = DBEngine(table)
+        db_ = DBEngine(table,database_path)
         for fk in table['foreign_keys']:
             if fk[0] not in table['primary_keys'] and fk[0] not in table['unique_fk']:
                 try:
@@ -871,9 +872,10 @@ def bridge_table_for_many2many_relationship(tables):
 
 
 if __name__ == '__main__':
-    
     # 1. Hyper parameters
     args = construct_hyper_param()
+    database_path = args.db_path
+
     # 2. Prepare data
     tables = json.load(open(args.in_file,'r'))
     all_words = pickle.load(open(os.path.join("./NatSQL/data/20k.pkl"), 'rb'))
@@ -898,18 +900,18 @@ if __name__ == '__main__':
                 t.pop('column_names_order')
     
     if args.correct_primary_keys:
-        correct_primary_keys(tables,schemas)
-        label_disjoint_tables(tables)
+        correct_primary_keys(tables,schemas,database_path)
+        label_disjoint_tables(tables,database_path)
     
     if args.correct_col_type:
-        tables = re_identify_boolean_type(tables,args.use_extra_col_types)
+        tables = re_identify_boolean_type(tables,args.use_extra_col_types,database_path)
         tables = unifie_words(tables)
 
     if args.remove_start_table:
         tables = remove_start_table(tables,schemas)
 
     if args.analyse_same_column:
-        tables = analyse_same_column(tables,schemas)
+        tables = analyse_same_column(tables,schemas,database_path)
     
     if args.seperate_col_name:
         tables = seperate_col_name(tables,all_words,schemas)

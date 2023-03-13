@@ -10,7 +10,7 @@ from .utils import str_is_num
 
 class DBEngine:
     DB_SHARE = None
-    def __init__(self, schema):
+    def __init__(self, schema, database_path):
         if schema and type(schema) == Schema_Token:
             fdb = schema.db_id
             self.table_list = schema.table_names_original
@@ -28,7 +28,7 @@ class DBEngine:
         else:
             return
         self.db_id = fdb
-        file_path = os.path.join(DATABASE_PATH(),fdb,fdb+ ".sqlite")
+        file_path = os.path.join(database_path,fdb,fdb+ ".sqlite")
         try:
             self.db = sqlite3.connect(file_path)
         except Exception as e:

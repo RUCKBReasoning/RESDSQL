@@ -65,6 +65,8 @@ def parse_option():
                         help = 'the number of returned sequences in model.generate() function (num_return_sequences <= num_beams).')
     parser.add_argument("--target_type", type = str, default = "sql",
                 help = "sql or natsql.")
+    parser.add_argument("--output", type = str, default = "predicted_sql.txt",
+                help = "save file of the predicted sqls.")
     
     opt = parser.parse_args()
 
@@ -315,9 +317,13 @@ def _test(opt):
                 )
             else:
                 raise ValueError()
-
+    
+    new_dir = "/".join(opt.output.split("/")[:-1]).strip()
+    if new_dir != "":
+        os.makedirs(new_dir, exist_ok = True)
+    
     # save results
-    with open("predicted_sql.txt", "w", encoding = 'utf-8') as f:
+    with open(opt.output, "w", encoding = 'utf-8') as f:
         for pred in predict_sqls:
             f.write(pred + "\n")
     
