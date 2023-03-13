@@ -17,11 +17,13 @@ If this repository could help you, please cite the following paper:
 }
 ```
 
+**Update (2023.3.13)**: We evaluated our method on a diagnostic evaluation benchmark, [Dr.Spider](https://github.com/awslabs/diagnostic-robustness-text-to-sql), which contains 17 test sets to measure the robustness of Text-to-SQL parsers under different perturbation perspectives.
+
 ## Overview
 We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficuty of Text-to-SQL. More details can be found in our [paper](https://arxiv.org/abs/2302.05965). All experiments are conducted on a single NVIDIA A100 80G GPU.
 
 ## Evaluation Results
-We evaluate RESDSQL on four datasets: Spider, Spider-DK, Spider-Syn, and Spider-Realistic. Let's look at the following numbers:
+We evaluate RESDSQL on five benchmarks: Spider, Spider-DK, Spider-Syn, Spider-Realistic, and Dr.Spider. We adopt two metrics: Exact-set-Match accuracy (EM) and EXecution accuracy (EX). Let's look at the following numbers:
 
 **On Spider:**
 
@@ -39,6 +41,30 @@ We evaluate RESDSQL on four datasets: Spider, Spider-DK, Spider-Syn, and Spider-
 | Model | DK EM | DK EX | Syn EM | Syn EX | Realistic EM | Realistic EX |
 |-------|-------|-------|--------|--------|--------------|--------------|
 | RESDSQL-3B+NatSQL| 53.3% | 66.0% | 69.1% | 76.9% | 77.4% | 81.9% |
+
+**On Dr.Spider's perturbation sets:**
+Following Dr.Spider, we only report **EX** for each post-perturbation set and choose PICARD and CodeX as our baseline methods.
+
+| Perturbation set | PICARD | CodeX | RESDSQL-3B+NatSQL |
+|------------------|--------|-------|-------------------|
+| DB-Schema-synonym | 56.5% | 62.0% | **67.2%** |
+| DB-Schema-abbreviation | 64.7% | 68.6% | **69.1%** |
+| DB-DBcontent-equivalence | 43.7% | **51.6%** | 40.1% |
+| NLQ-Keyword-synonym | 66.3% | 55.5% | **72.4%** |
+| NLQ-Keyword-carrier | 82.7% | **85.2%** | 83.5% |
+| NLQ-Column-synonym | 57.2% | 54.7% | **63.1%** |
+| NLQ-Column-carrier | **64.9%** | 51.1% | 63.9% |
+| NLQ-Column-attribute | 56.3% | 46.2% | **71.4%** |
+| NLQ-Column-value | 69.4%  | 71.4% | **76.6%** |
+| NLQ-Value-synonym | 53.0% | **59.9%** | 53.2% |
+| NLQ-Multitype | 57.1%  | 53.7% | **60.7%** |
+| NLQ-Others | 78.3% | 69.7% | **79.0%** |
+| SQL-Comparison | 68.0% | 66.9% | **82.0%** |
+| SQL-Sort-order | 74.5% | 57.8% | **85.4%** |
+| SQL-NonDB-number | 77.1% | **89.3%** | 85.5% |
+| SQL-DB-text | 65.1% | 72.4% | **74.3%** |
+| SQL-DB-number | 85.1% | 79.3% | **88.8%** |
+| Average | 65.9% | 64.4% | **71.5%** |
 
 ## Prerequisites
 Create a virtual anaconda environment:
@@ -61,6 +87,7 @@ mkdir eval_results
 mkdir models
 mkdir tensorboard_log
 mkdir third_party
+mkdir predictions
 ```
 Clone evaluation scripts:
 ```sh
@@ -70,14 +97,17 @@ git clone https://github.com/ElementAI/test-suite-sql-eval.git
 mv ./test-suite-sql-eval ./test_suite
 cd ..
 ```
-Download datasets (including Spider, Spider-DK, Spider-Syn, and Spider-Realistic) from [data](https://drive.google.com/file/d/1b86WpUrLo1IL98Tnogi3U6MTWK39yhMO/view?usp=share_link) and [database](https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link) and unzip them:
+
+## Prepare data
+Download Spider, Spider-DK, Spider-Syn, Spider-Realistic, and Dr.Spider from [data](https://drive.google.com/file/d/1rJBCz1Gyc67TXQKUePgrrmnqhOWSYplq/view?usp=sharing) **(add Dr.Spider in 2023.3.13)** and [database](https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link) and then unzip them:
 ```sh
 unzip data.zip
 unzip database.zip
 ```
+Notice: Dr.Spider has been preprocessed following the instructions on its Github page.
 
 ## Inference
-Our results can be easily reproduced through our released checkpionts.
+The evaluation results can be easily reproduced through our released scripts and checkpionts.
 ### Step1: Prepare Checkpoints
 First, you should download T5 checkpoints from the table shown above. Then, you **must** download our cross-encoder checkpoints because our method is two-stage. For SQL and NatSQL, we train two cross-encoder because the classification labels of them are slightly different. Here are links: 
 | Cross-encoder Checkpoints | Google Drive | Baidu Netdisk |
@@ -106,18 +136,18 @@ After downloading and unpacking all checkpoints, the `models` folder should be:
 ```
 
 ### Step2: Run Inference
-The inference scripts are located in `scripts/inference`. Concretely, `infer_text2natsql.sh` represents RESDSQL-\*+NatSQL, `infer_text2sql.sh` represents RESDSQL-\*. For example, you can run the inference of RESDSQL-3B+NatSQL on Spider's dev set via:
+The inference scripts are located in `scripts/inference`. Concretely, `infer_text2natsql.sh` represents RESDSQL-{Base, Large, 3B}+NatSQL, `infer_text2sql.sh` represents RESDSQL-{Base, Large, 3B}. For example, you can run the inference of RESDSQL-3B+NatSQL on Spider's dev set via:
 ```sh
 sh scripts/inference/infer_text2natsql.sh 3b spider
 ```
-The first argument can be selected from [base, large, 3b] and the second argument can be selected from [spider, spider-realistic, spider-syn, spider-dk].
+The first argument (model scale) can be selected from `[base, large, 3b]` and the second argument (dataset name) can be selected from `[spider, spider-realistic, spider-syn, spider-dk, DB_schema_synonym, DB_schema_abbreviation, DB_DBcontent_equivalence, NLQ_keyword_synonym, NLQ_keyword_carrier, NLQ_column_synonym, NLQ_column_carrier, NLQ_column_attribute, NLQ_column_value, NLQ_value_synonym, NLQ_multitype, NLQ_others, SQL_comparison, SQL_sort_order, SQL_NonDB_number, SQL_DB_text, SQL_DB_number]`.
 
-The predicted SQL queries are recorded in `predicted_sql.txt`.
+The predicted SQL queries are recorded in `predictions/{dataset_name}/{model_name}/pred.sql`.
 
 ## Training
-If you want to train RESDSQL, we also provide training scripts in `scripts/text2natsql` and `scripts/text2sql`.
+We also provide scripts in `scripts/text2natsql` and `scripts/text2sql` to train our framework on Spider's training set and evaluate on Spider's dev set.
 
-**Training and evaluating RESDSQL-\*+NatSQL on Spider**
+**RESDSQL-{Base, Large, 3B}+NatSQL**
 ```sh
 # Step1: preprocess dataset
 sh scripts/train/text2natsql/preprocess.sh
@@ -133,7 +163,7 @@ sh scripts/train/text2natsql/train_text2natsql_t5_large.sh
 sh scripts/train/text2natsql/train_text2natsql_t5_base.sh
 ```
 
-**Training and evaluating RESDSQL-\* on Spider**
+**RESDSQL-{Base, Large, 3B}**
 ```sh
 # Step1: preprocess dataset
 sh scripts/train/text2sql/preprocess.sh
@@ -149,17 +179,15 @@ sh scripts/train/text2sql/train_text2sql_t5_large.sh
 sh scripts/train/text2sql/train_text2sql_t5_base.sh
 ```
 
-During the training process, the cross-encoder always saves the best checkpoint based on the total AUC, but T5 saves all intermediate checkpoints. We evaluate T5's checkpoints at the end of the training process to select the best checkpoint. The evaluation results are saved in `eval_results`.
+**During training, the cross-encoder (the first stage) always keeps the best checkpoint, but T5 (the second stage) keeps all the intermediate checkpoints, because different test sets may achieve the best Text-to-SQL performance on different checkpoints**. Therefore, given a test set, we need to evaluate all the intermediate checkpoints and compare their performance to find the best checkpoint. The evaluation results of checkpoints are saved in `eval_results`.
 
-As described in our paper, we can also use the scripts in `scripts/evaluate_robustness` to evaluate checkpoints of RESDSQL-3B+NatSQL on Spider-DK, Spider-Syn, and Spider-Realistic.
-
-For example, we can evaluate RESDSQL-3B+NatSQL on Spider-DK via:
+Therefore, for Spider-DK, Spider-Syn, and Spider-Realistic, we can evaluate checkpoints of RESDSQL-3B+NatSQL with the scripts provided in `scripts/evaluate_robustness`. Here is an example for Spider-DK:
 ```sh
-# Step1: preprocess dataset
+# Step1: preprocess Spider-DK
 sh scripts/evaluate_robustness/preprocess_spider_dk.sh
 # Step2: Run evaluation on Spider-DK
 sh scripts/evaluate_robustness/evaluate_on_spider_dk.sh
 ```
 
 ## Acknowledgements
-We would thanks to Hongjin Su and Tao Yu for their help in evaluating our method on Spider's test set. We would also thanks to PICARD ([paper](https://arxiv.org/abs/2109.05093), [code](https://github.com/ServiceNow/picard)), NatSQL ([paper](https://arxiv.org/abs/2109.05153), [code](https://github.com/ygan/NatSQL)), Spider ([paper](https://arxiv.org/abs/1809.08887), [dataset](https://yale-lily.github.io/spider)), Spider-DK ([paper](https://arxiv.org/abs/2109.05157), [dataset](https://github.com/ygan/Spider-DK)), Spider-Syn ([paper](https://arxiv.org/abs/2106.01065), [dataset](https://github.com/ygan/Spider-Syn)), and Spider-Realistic ([paper](https://arxiv.org/abs/2010.12773), [dataset](https://doi.org/10.5281/zenodo.5205322)) for their interesting work and open-sourced code and dataset.
+We would thanks to Hongjin Su and Tao Yu for their help in evaluating our method on Spider's test set. We would also thanks to PICARD ([paper](https://arxiv.org/abs/2109.05093), [code](https://github.com/ServiceNow/picard)), NatSQL ([paper](https://arxiv.org/abs/2109.05153), [code](https://github.com/ygan/NatSQL)), Spider ([paper](https://arxiv.org/abs/1809.08887), [dataset](https://yale-lily.github.io/spider)), Spider-DK ([paper](https://arxiv.org/abs/2109.05157), [dataset](https://github.com/ygan/Spider-DK)), Spider-Syn ([paper](https://arxiv.org/abs/2106.01065), [dataset](https://github.com/ygan/Spider-Syn)), Spider-Realistic ([paper](https://arxiv.org/abs/2010.12773), [dataset](https://doi.org/10.5281/zenodo.5205322)), and Dr.Spider ([paper](https://openreview.net/pdf?id=Wc5bmZZU9cy), [dataset](https://github.com/awslabs/diagnostic-robustness-text-to-sql)) for their interesting work and open-sourced code and dataset.
