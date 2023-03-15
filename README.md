@@ -45,26 +45,28 @@ We evaluate RESDSQL on five benchmarks: Spider, Spider-DK, Spider-Syn, Spider-Re
 **On Dr.Spider's perturbation sets:**
 Following Dr.Spider, we only report **EX** for each post-perturbation set and choose PICARD and CodeX as our baseline methods.
 
-| Perturbation set | PICARD | CodeX | RESDSQL-3B+NatSQL |
-|------------------|--------|-------|-------------------|
-| DB-Schema-synonym | 56.5% | 62.0% | **67.2%** |
-| DB-Schema-abbreviation | 64.7% | 68.6% | **69.1%** |
-| DB-DBcontent-equivalence | 43.7% | **51.6%** | 40.1% |
-| NLQ-Keyword-synonym | 66.3% | 55.5% | **72.4%** |
-| NLQ-Keyword-carrier | 82.7% | **85.2%** | 83.5% |
-| NLQ-Column-synonym | 57.2% | 54.7% | **63.1%** |
-| NLQ-Column-carrier | **64.9%** | 51.1% | 63.9% |
-| NLQ-Column-attribute | 56.3% | 46.2% | **71.4%** |
-| NLQ-Column-value | 69.4%  | 71.4% | **76.6%** |
-| NLQ-Value-synonym | 53.0% | **59.9%** | 53.2% |
-| NLQ-Multitype | 57.1%  | 53.7% | **60.7%** |
-| NLQ-Others | 78.3% | 69.7% | **79.0%** |
-| SQL-Comparison | 68.0% | 66.9% | **82.0%** |
-| SQL-Sort-order | 74.5% | 57.8% | **85.4%** |
-| SQL-NonDB-number | 77.1% | **89.3%** | 85.5% |
-| SQL-DB-text | 65.1% | 72.4% | **74.3%** |
-| SQL-DB-number | 85.1% | 79.3% | **88.8%** |
-| Average | 65.9% | 64.4% | **71.5%** |
+| Perturbation set | PICARD | CodeX | RESDSQL-3B | RESDSQL-3B+NatSQL |
+|------------------|--------|-------|-------------------|-----|
+| DB-Schema-synonym | 56.5% | 62.0% | 63.4% | **68.2%** |
+| DB-Schema-abbreviation | 64.7% | 68.6% | 64.5% | **70.0%** |
+| DB-DBcontent-equivalence | 43.7% | **51.6%** | 40.3% | 40.1% |
+| NLQ-Keyword-synonym | 66.3% | 55.5% | 67.5% | **72.4%** |
+| NLQ-Keyword-carrier | 82.7% | 85.2% | **86.7%** | 83.5% |
+| NLQ-Column-synonym | 57.2% | 54.7% | 57.4% | **63.1%** |
+| NLQ-Column-carrier | 64.9% | 51.1% | **69.9%** | 63.9% |
+| NLQ-Column-attribute | 56.3% | 46.2% | 58.8% | **71.4%** |
+| NLQ-Column-value | 69.4%  | 71.4% | 73.4% | **76.6%** |
+| NLQ-Value-synonym | 53.0% | **59.9%** | 53.8% | 53.2% |
+| NLQ-Multitype | 57.1%  | 53.7% | 60.1% | **60.7%** |
+| NLQ-Others | 78.3% | 69.7% | 77.3% | **79.0%** |
+| SQL-Comparison | 68.0% | 66.9% | 70.2% | **82.0%** |
+| SQL-Sort-order | 74.5% | 57.8% | 79.7% | **85.4%** |
+| SQL-NonDB-number | 77.1% | **89.3%** | 83.2% | 85.5% |
+| SQL-DB-text | 65.1% | 72.4% | 67.8% | **74.3%** |
+| SQL-DB-number | 85.1% | 79.3% | 85.4% | **88.8%** |
+| Average | 65.9% | 64.4% | 68.2% | **71.7%** |
+
+Notice: We also employed the modified test suite script (see this [issue](https://github.com/awslabs/diagnostic-robustness-text-to-sql/issues/1)) to evaluate the model-generated results, but obtained the same numbers as above. Nevertheless, we suggest that further work should use their modified script to evaluate Dr.Spider.
 
 ## Prerequisites
 Create a virtual anaconda environment:
@@ -99,7 +101,7 @@ cd ..
 ```
 
 ## Prepare data
-Download Spider, Spider-DK, Spider-Syn, Spider-Realistic, and Dr.Spider from [data](https://drive.google.com/file/d/1rJBCz1Gyc67TXQKUePgrrmnqhOWSYplq/view?usp=sharing) **(add Dr.Spider in 2023.3.13)** and [database](https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link) and then unzip them:
+Download Spider, Spider-DK, Spider-Syn, Spider-Realistic, and Dr.Spider from [data](https://drive.google.com/file/d/1a6z2OeDOkxS5kbKPqOnNqRq5XN6IXSXu/view?usp=sharing) **(add Dr.Spider in 2023.3.13)** and [database](https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link) and then unzip them:
 ```sh
 unzip data.zip
 unzip database.zip
