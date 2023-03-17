@@ -47,7 +47,7 @@ Following Dr.Spider, we only report **EX** for each post-perturbation set and ch
 
 | Perturbation set | PICARD | CodeX | RESDSQL-3B | RESDSQL-3B+NatSQL |
 |------------------|--------|-------|-------------------|-----|
-| DB-Schema-synonym | 56.5% | 62.0% | 63.4% | **68.2%** |
+| DB-Schema-synonym | 56.5% | 62.0% | 63.3% | **68.3%** |
 | DB-Schema-abbreviation | 64.7% | 68.6% | 64.5% | **70.0%** |
 | DB-DBcontent-equivalence | 43.7% | **51.6%** | 40.3% | 40.1% |
 | NLQ-Keyword-synonym | 66.3% | 55.5% | 67.5% | **72.4%** |
@@ -101,7 +101,7 @@ cd ..
 ```
 
 ## Prepare data
-Download Spider, Spider-DK, Spider-Syn, Spider-Realistic, and Dr.Spider from [data](https://drive.google.com/file/d/1a6z2OeDOkxS5kbKPqOnNqRq5XN6IXSXu/view?usp=sharing) **(add Dr.Spider in 2023.3.13)** and [database](https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link) and then unzip them:
+Download [data](https://drive.google.com/file/d/11TzzDAy9ZYwl9EaU6QApnf7AnfZ8UbO4/view?usp=sharing) **(including Spider, Spider-DK, Spider-Syn, Spider-Realistic, and Dr.Spider)** and [database](https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link) **(including databases used in Spider and Spider-DK)** and then unzip them:
 ```sh
 unzip data.zip
 unzip database.zip
