@@ -5,6 +5,7 @@ import argparse
 from utils.bridge_content_encoder import get_database_matches
 from sql_metadata import Parser
 from tqdm import tqdm
+from pathlib import Path
 
 sql_keywords = ['select', 'from', 'where', 'group', 'order', 'limit', 'intersect', 'union', \
     'except', 'join', 'on', 'as', 'not', 'between', 'in', 'like', 'is', 'exists', 'max', 'min', \
@@ -267,24 +268,7 @@ def isFloat(string):
                 return False
         return True
 
-def main(opt):
-    dataset = json.load(open(opt.input_dataset_path))
-    all_db_infos = json.load(open(opt.table_path))
-    
-    assert opt.mode in ["train", "eval", "test"]
-
-    if opt.mode in ["train", "eval"] and opt.target_type == "natsql":
-        # only train_spider.json and dev.json have corresponding natsql dataset
-        natsql_dataset = json.load(open(opt.natsql_dataset_path))
-    else:
-        # empty natsql dataset
-        natsql_dataset = [None for _ in range(len(dataset))]
-    
-    db_schemas = get_db_schemas(all_db_infos)
-    
-    preprocessed_dataset = []
-
-    for natsql_data, data in tqdm(zip(natsql_dataset, dataset)):
+def preprocess_record(natsql_data, data, db_schemas, mode, target_type, db_path):
         if data['query'] == 'SELECT T1.company_name FROM Third_Party_Companies AS T1 JOIN Maintenance_Contracts AS T2 ON T1.company_id  =  T2.maintenance_contract_company_id JOIN Ref_Company_Types AS T3 ON T1.company_type_code  =  T3.company_type_code ORDER BY T2.contract_end_date DESC LIMIT 1':
             data['query'] = 'SELECT T1.company_type FROM Third_Party_Companies AS T1 JOIN Maintenance_Contracts AS T2 ON T1.company_id  =  T2.maintenance_contract_company_id ORDER BY T2.contract_end_date DESC LIMIT 1'
             data['query_toks'] = ['SELECT', 'T1.company_type', 'FROM', 'Third_Party_Companies', 'AS', 'T1', 'JOIN', 'Maintenance_Contracts', 'AS', 'T2', 'ON', 'T1.company_id', '=', 'T2.maintenance_contract_company_id', 'ORDER', 'BY', 'T2.contract_end_date', 'DESC', 'LIMIT', '1']
@@ -303,7 +287,7 @@ def main(opt):
         question = data["question"].replace("\u2018", "'").replace("\u2019", "'").replace("\u201c", "'").replace("\u201d", "'").strip()
         db_id = data["db_id"]
         
-        if opt.mode == "test":
+        if mode == "test":
             sql, norm_sql, sql_skeleton = "", "", ""
             sql_tokens = []
 
@@ -356,7 +340,7 @@ def main(opt):
                 table["table_name_original"], 
                 table["column_names_original"], 
                 db_id, 
-                opt.db_path
+                db_path
             )
 
             preprocessed_data["db_schema"].append({
@@ -369,7 +353,7 @@ def main(opt):
             })
 
             # extract table and column classification labels
-            if opt.target_type == "sql":
+            if target_type == "sql":
                 if table["table_name_original"] in sql_tokens:  # for used tables
                     preprocessed_data["table_labels"].append(1)
                     column_labels = []
@@ -383,7 +367,7 @@ def main(opt):
                 else:  # for unused tables and their columns
                     preprocessed_data["table_labels"].append(0)
                     preprocessed_data["column_labels"].append([0 for _ in range(len(table["column_names_original"]))])
-            elif opt.target_type == "natsql":
+            elif target_type == "natsql":
                 if table["table_name_original"] in natsql_tokens: # for used tables
                     preprocessed_data["table_labels"].append(1)
                     column_labels = []
@@ -398,9 +382,31 @@ def main(opt):
                     preprocessed_data["column_labels"].append([0 for _ in range(len(table["column_names_original"]))])
             else:
                 raise ValueError("target_type should be ``sql'' or ``natsql''")
-        
+
+def main(opt):
+    dataset = json.load(open(opt.input_dataset_path))
+    all_db_infos = json.load(open(opt.table_path))
+    
+    assert opt.mode in ["train", "eval", "test"]
+
+    if opt.mode in ["train", "eval"] and opt.target_type == "natsql":
+        # only train_spider.json and dev.json have corresponding natsql dataset
+        natsql_dataset = json.load(open(opt.natsql_dataset_path))
+    else:
+        # empty natsql dataset
+        natsql_dataset = [None for _ in range(len(dataset))]
+    
+    db_schemas = get_db_schemas(all_db_infos)
+    
+    preprocessed_dataset = []
+
+    for natsql_data, data in tqdm(zip(natsql_dataset, dataset)):
+        preprocessed_data = preprocess_record(natsql_data, data, db_schemas, opt.mode, opt.target_type, opt.db_path)
         preprocessed_dataset.append(preprocessed_data)
 
+    # create output directory if not exists
+    Path(opt.output_dataset_path).parent.mkdir(parents=True, exist_ok=True)
+    # write preprocessed dataset
     with open(opt.output_dataset_path, "w") as f:
         preprocessed_dataset_str = json.dumps(preprocessed_dataset, indent = 2)
         f.write(preprocessed_dataset_str)
