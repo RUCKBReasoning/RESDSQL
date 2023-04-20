@@ -1,0 +1,6 @@
+# ignore pycache
+global-exclude __pycache__
+models/
+data/
+*.pyc
+predictions/

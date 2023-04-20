@@ -1,4 +1,5 @@
 set -e
+echo "Infer text2sql"
 
 device="0"
 
@@ -25,8 +26,8 @@ if [ $2 = "spider" ]
 then
     # spider's dev set
     table_path="./data/spider/tables.json"
-    input_dataset_path="./data/spider/dev.json"
-    db_path="./database"
+    input_dataset_path="./data/spider/test.json"
+    db_path="./data/spider/database"
     output="./predictions/Spider-dev/$model_name/pred.sql"
 elif [ $2 = "spider-realistic" ]
 then
@@ -199,7 +200,7 @@ python text2sql.py \
     --device $device \
     --seed 42 \
     --save_path $text2sql_model_save_path \
-    --mode "eval" \
+    --mode "test" \
     --dev_filepath "./data/preprocessed_data/resdsql_test.json" \
     --original_dev_filepath $input_dataset_path \
     --db_path $db_path \
