@@ -173,6 +173,9 @@ def decode_natsqls(
             
             # try to execute the predicted sql
             try:
+                # Note: execute_sql will be success for empty string
+                assert len(pred_sql) > 0, "pred sql is empty!"
+
                 results = execute_sql(cursor, pred_sql)
                 cursor.close()
                 cursor.connection.close()
@@ -222,6 +225,9 @@ def decode_sqls(
             pred_sql = pred_sql.replace("='", "= '").replace("!=", " !=").replace(",", " ,")
             
             try:
+                # Note: execute_sql will be success for empty string
+                assert len(pred_sql) > 0, "pred sql is empty!"
+
                 results = execute_sql(cursor, pred_sql)
                 # if the current sql has no execution error, we record and return it
                 pred_executable_sql = pred_sql
