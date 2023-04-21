@@ -382,6 +382,7 @@ def preprocess_record(natsql_data, data, db_schemas, mode, target_type, db_path)
                     preprocessed_data["column_labels"].append([0 for _ in range(len(table["column_names_original"]))])
             else:
                 raise ValueError("target_type should be ``sql'' or ``natsql''")
+        return preprocessed_data
 
 def main(opt):
     dataset = json.load(open(opt.input_dataset_path))
