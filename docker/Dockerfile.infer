@@ -1,13 +1,6 @@
 # FOR inference
-FROM python:3.10-bullseye
+FROM resdsql-base
 
-# copy and install dependencies from requirements.txt
-RUN pip install --upgrade pip setuptools wheel
-COPY requirements.txt /tmp/
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
-RUN mkdir -p /models
-
-# copy the app.
-COPY . /app
 RUN chmod +x /app/docker/entrypoint.sh
+EXPOSE 8000
 ENTRYPOINT ["/app/docker/entrypoint.sh"]

@@ -1,0 +1,19 @@
+
+FROM python:3.10-bullseye
+
+# copy and install dependencies from requirements.txt
+RUN pip install --upgrade pip setuptools wheel
+COPY requirements.txt /tmp/
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+RUN mkdir -p /models && mkdir -p /app/third_party && \
+ cd /app/third_party && git clone https://github.com/ElementAI/spider.git && \
+ git clone https://github.com/ElementAI/test-suite-sql-eval.git
+
+
+RUN mkdir -p /data && cd /data \
+ && gdown https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link --fuzzy --continue \
+ && unzip database.zip && rm database.zip
+
+# copy the app.
+COPY . /app
