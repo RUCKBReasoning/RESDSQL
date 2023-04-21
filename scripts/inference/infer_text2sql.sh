@@ -21,6 +21,7 @@ else
 fi
 
 model_name="resdsql_$1"
+suffix=""
 
 if [ $2 = "spider" ]
 then
@@ -156,6 +157,20 @@ then
     input_dataset_path="./data/diagnostic-robustness-text-to-sql/data/SQL_sort_order/questions_post_perturbation.json"
     db_path="./data/diagnostic-robustness-text-to-sql/data/SQL_sort_order/databases"
     output="./predictions/SQL_sort_order/$model_name/pred.sql"
+elif [ $2 = "custom" ]
+then
+    if [ -z $3 ]
+    then
+        echo "The third arg (temporary file name) must be given." >&2
+        exit 1
+    else
+        echo "The third arg is $3"
+    fi
+    table_path="./data/custom/$3_tables.json"
+    input_dataset_path="./data/custom/$3_input.json"
+    db_path="./data/custom/$3.sqllite"
+    output="./predictions/$3.sql"
+    suffix=$3
 else
     echo "The second arg must in [spider, spider-realistic, spider-syn, spider-dk, DB_schema_synonym, DB_schema_abbreviation, DB_DBcontent_equivalence, NLQ_keyword_synonym, NLQ_keyword_carrier, NLQ_column_synonym, NLQ_column_carrier, NLQ_column_attribute, NLQ_column_value, NLQ_value_synonym, NLQ_multitype, NLQ_others, SQL_comparison, SQL_sort_order, SQL_NonDB_number, SQL_DB_text, SQL_DB_number]."
     exit
@@ -166,7 +181,7 @@ python preprocessing.py \
     --mode "test" \
     --table_path $table_path \
     --input_dataset_path $input_dataset_path \
-    --output_dataset_path "./data/preprocessed_data/preprocessed_test.json" \
+    --output_dataset_path "./data/preprocessed_data/preprocessed_test_$suffix.json" \
     --db_path $db_path \
     --target_type "sql"
 
@@ -176,16 +191,16 @@ python schema_item_classifier.py \
     --device $device \
     --seed 42 \
     --save_path "./models/text2sql_schema_item_classifier" \
-    --dev_filepath "./data/preprocessed_data/preprocessed_test.json" \
-    --output_filepath "./data/preprocessed_data/test_with_probs.json" \
+    --dev_filepath "./data/preprocessed_data/preprocessed_test_$suffix.json" \
+    --output_filepath "./data/preprocessed_data/test_with_probs_$suffix.json" \
     --use_contents \
     --add_fk_info \
     --mode "test"
 
 # generate text2sql test set
 python text2sql_data_generator.py \
-    --input_dataset_path "./data/preprocessed_data/test_with_probs.json" \
-    --output_dataset_path "./data/preprocessed_data/resdsql_test.json" \
+    --input_dataset_path "./data/preprocessed_data/test_with_probs_$suffix.json" \
+    --output_dataset_path "./data/preprocessed_data/resdsql_test_$suffix.json" \
     --topk_table_num 4 \
     --topk_column_num 5 \
     --mode "test" \
@@ -201,7 +216,7 @@ python text2sql.py \
     --seed 42 \
     --save_path $text2sql_model_save_path \
     --mode "test" \
-    --dev_filepath "./data/preprocessed_data/resdsql_test.json" \
+    --dev_filepath "./data/preprocessed_data/resdsql_test_$suffix.json" \
     --original_dev_filepath $input_dataset_path \
     --db_path $db_path \
     --num_beams 8 \
