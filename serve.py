@@ -78,6 +78,9 @@ def schema_spider_list(db_id):
 @app.post("/schema/custom/")
 def schema_spider_create(schema: SQLiteSchema):
     create_sqlite_file(schema.db_schema)
+    db_id = schema.db_schema['db_id']
+    db_path = f"{custom_db_dir}/{db_id}.sqlite"
+    return dump_db_json_schema(db_path, db_id)
 
 @app.get("/schema/spider/{db_id}")
 def schema_spider_get(db_id):
