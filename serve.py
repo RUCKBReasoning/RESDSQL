@@ -12,6 +12,8 @@ import sqlite3
 app = FastAPI()
 spider_db_dir = '/data/spider/database'
 custom_db_dir = '/data/custom/database'
+custom_sqlite_dbs = {Path(f).stem:Path(f) for f in Path(custom_db_dir).rglob('*.sqlite')}
+spider_sqlite_dbs = {Path(f).stem:Path(f) for f in Path(spider_db_dir).rglob('*.sqlite')}
 
 def create_sqlite_file(schema_json):
     sqlite_path = f'{custom_db_dir}/{schema_json["db_id"]}.sqlite'
@@ -43,7 +45,6 @@ def create_sqlite_file(schema_json):
     cursor.close()
     sqlite_conn.close()
 
-
 class SQLiteSchema(BaseModel):
     db_schema: Dict
 
@@ -52,21 +53,16 @@ class UserQuery(BaseModel):
     db_id: Optional[str]
     query: str
     db_type: Literal['spider', 'custom'] = 'spider'
-    # schema_json: Optional[str]
 
 @app.get("/schema/spider/")
 def schema_spider_list():
     '''list all spider schemas'''
-    data = []
-    sqlite_files = sorted([Path(f).stem for f in Path(spider_db_dir).rglob('*.sqlite')])
-    return sqlite_files
+    return list(spider_sqlite_dbs.keys())
 
 @app.get("/schema/custom/")
-def schema_spider_list():
+def schema_custom_list():
     '''list all custom schemas'''
-    data = []
-    sqlite_files = sorted([Path(f).stem for f in Path(spider_db_dir).rglob('*.sqlite')])
-    return sqlite_files
+    return list(custom_sqlite_dbs.keys())
 
 @app.get("/schema/custom/{db_id}")
 def schema_spider_list(db_id):
@@ -79,7 +75,12 @@ def schema_spider_list(db_id):
 def schema_spider_create(schema: SQLiteSchema):
     create_sqlite_file(schema.db_schema)
     db_id = schema.db_schema['db_id']
-    db_path = f"{custom_db_dir}/{db_id}.sqlite"
+    db_path = f"{custom_db_dir}/{db_id}/{db_id}.sqlite"
+    json_path = f"{custom_db_dir}/{db_id}/{db_id}.json"
+    # create parent if it doesn't exist
+    Path(f'{custom_db_dir}/{db_id}').mkdir(parents=True, exist_ok=True)
+    with open(json_path, 'w') as f:
+        json.dump(schema.db_schema, f)
     return dump_db_json_schema(db_path, db_id)
 
 @app.get("/schema/spider/{db_id}")
@@ -94,6 +95,9 @@ def resdsql_query(user_query: UserQuery):
         raise HTTPException(status_code=400, detail="Either db_id or scheme should be provided")
 
     data = [{"db_id": user_query.db_id, "question": user_query.query, "query": ""}]
+
+    if user_query.db_type == 'custom':
+        _path = f"{custom_db_dir}/{user_query.db_id}.sqlite"
 
     temp_file_stem = f'{uuid.uuid4()}'
     Path(f'data/custom').mkdir(parents=True, exist_ok=True)
