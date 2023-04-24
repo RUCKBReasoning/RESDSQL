@@ -138,7 +138,7 @@ def resdsql_query(user_query: UserQuery):
     schema_json_path = get_schema_json_path(user_query.db_id, temp_query_file_stem)
 
     logger.info(f'input_path is {input_path} and schema json path is {schema_json_path}')
-    result = os.system(f'sh scripts/inference/infer_text2sql.sh large {db_type} {temp_query_file_stem}')
+    result = os.system(f'sh scripts/inference/infer_text2sql.sh large {db_type} api {temp_query_file_stem}')
     print(f'inference script result : {result}')
 
     # read the result

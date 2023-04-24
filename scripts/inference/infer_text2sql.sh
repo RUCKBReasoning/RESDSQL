@@ -28,12 +28,19 @@ suffix=""
 
 if [ $2 = "spider" ]
 then
-    # spider's dev set
-    table_path="/data/spider/tables.json"
-    input_dataset_path="/data/query/$3_input.json"
-    db_path="/data/spider/database"
-    # output="./predictions/Spider-dev/$model_name/pred.sql"
-    output="/data/query/$3_output.sql"
+    if [ $3 = "api" ]
+    then
+        # spider's test set
+        table_path="/data/spider/tables.json"
+        input_dataset_path="/data/query/$4_input.json"
+        db_path="/data/spider/database"
+        output="/data/query/$4_output.sql"
+    else
+        table_path="./data/spider/tables.json"
+        input_dataset_path="./data/spider/dev.json"
+        db_path="./database"
+        output="./predictions/Spider-dev/$model_name/pred.sql"
+    fi
 elif [ $2 = "spider-realistic" ]
 then
     # spider-realistic
@@ -163,19 +170,19 @@ then
     output="./predictions/SQL_sort_order/$model_name/pred.sql"
 elif [ $2 = "custom" ]
 then
-    if [ -z $3 ]
+    if [ -z $4 ]
     then
         echo "The third arg (temporary file name) must be given." >&2
         exit 1
     else
-        echo "The third arg is $3"
+        echo "The third arg is $4"
     fi
-    table_path="/data/query/$3_schema.json"
-    input_dataset_path="/data/query/$3_input.json"
+    table_path="/data/query/$4_schema.json"
+    input_dataset_path="/data/query/$4_input.json"
     db_path="/data/spider/database"
-    output="/data/query/$3_output.sql"
+    output="/data/query/$4_output.sql"
     echo "out file is $output"
-    suffix=$3
+    suffix=$4
     # check if schema json exists
     if [ ! -f $table_path ]
     then
