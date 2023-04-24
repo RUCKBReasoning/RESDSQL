@@ -11,9 +11,12 @@ RUN mkdir -p /models && mkdir -p /app/third_party && \
  git clone https://github.com/ElementAI/test-suite-sql-eval.git
 
 
+# download from Ajay's google drive as the original link from https://yale-lily.github.io/spider is not working from Azure VM
 RUN mkdir -p /data/ && cd /data/ \
- && gdown https://drive.google.com/file/d/1s4ItreFlTa8rUdzwVRmUR2Q9AHnxbNjo/view?usp=share_link --fuzzy --continue \
- && unzip database.zip -d spider && rm database.zip
+ && gdown https://drive.google.com/file/d/1YqWj68aNXdXQTG5xCeX6nifHyY-SFLxD/view?usp=share_link --fuzzy --continue \
+ && unzip spider.zip && rm spider.zip
+
+RUN pip install torch
 
 # copy the app.
 COPY . /app

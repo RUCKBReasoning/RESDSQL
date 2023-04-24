@@ -8,15 +8,36 @@ import uuid
 from pathlib import Path
 from third_party.spider.preprocess.get_tables import dump_db_json_schema
 import sqlite3
+import logging
+
+logging.config.fileConfig('logging.conf', disable_existing_loggers=False)
+logger = logging.getLogger(__name__) 
 
 app = FastAPI()
 spider_db_dir = '/data/spider/database'
-custom_db_dir = '/data/custom/database'
-custom_sqlite_dbs = {Path(f).stem:Path(f) for f in Path(custom_db_dir).rglob('*.sqlite')}
-spider_sqlite_dbs = {Path(f).stem:Path(f) for f in Path(spider_db_dir).rglob('*.sqlite')}
+query_dir = '/data/query'
+sqlite_db_dict = {Path(f).stem:Path(f) for f in Path(spider_db_dir).rglob('*.sqlite')}
+spider_db_ids = [o['db_id'] for o in json.load(open('/data/spider/tables.json'))]
+Path(query_dir).mkdir(parents=True, exist_ok=True)
+
+def get_sqlite_path(db_id, db_type):
+    return f'{spider_db_dir}/{db_id}/{db_id}.sqlite'
+
+def get_db_dict(force_refresh=False):
+    global sqlite_db_dict
+    if force_refresh:
+        sqlite_db_dict = {Path(f).stem:Path(f) for f in Path(spider_db_dir).rglob('*.sqlite')}
+    return sqlite_db_dict
 
 def create_sqlite_file(schema_json):
-    sqlite_path = f'{custom_db_dir}/{schema_json["db_id"]}.sqlite'
+    db_id = schema_json['db_id']
+    if db_id in spider_db_ids:
+        raise HTTPException(status_code=400, detail=f"db_id {db_id} already exists in spider")
+
+    sqlite_path = get_sqlite_path(schema_json['db_id'], 'custom')
+    logger.info(f'sqlite path is {sqlite_path}')
+    # create parent if not exists
+    Path(sqlite_path).parent.mkdir(parents=True, exist_ok=True)
     print(f'creating sqlite file at {sqlite_path}')
     sqlite_conn = sqlite3.connect(sqlite_path)
     cursor = sqlite_conn.cursor()
@@ -44,6 +65,8 @@ def create_sqlite_file(schema_json):
     sqlite_conn.commit()
     cursor.close()
     sqlite_conn.close()
+    get_db_dict(force_refresh=True)
+    return sqlite_path
 
 class SQLiteSchema(BaseModel):
     db_schema: Dict
@@ -54,34 +77,38 @@ class UserQuery(BaseModel):
     query: str
     db_type: Literal['spider', 'custom'] = 'spider'
 
+def get_schema_json_path(db_id, temp_query_file_stem):
+    if db_id in spider_db_ids:
+        return f'{spider_db_dir}/{db_id}/tables.json'
+
+    # custom sql db
+    schema_json = dump_db_json_schema(f'{spider_db_dir}/{db_id}/{db_id}.sqlite', db_id)
+
+    # save the schema json
+    schema_json_path = f'{query_dir}/{temp_query_file_stem}_schema.json'
+    with open(schema_json_path, 'w') as f:
+        json.dump([schema_json], f)
+    return schema_json_path
+
 @app.get("/schema/spider/")
 def schema_spider_list():
     '''list all spider schemas'''
-    return list(spider_sqlite_dbs.keys())
+    return spider_db_ids
 
 @app.get("/schema/custom/")
 def schema_custom_list():
     '''list all custom schemas'''
-    return list(custom_sqlite_dbs.keys())
+    return [db_id for db_id in get_db_dict().keys() if db_id not in spider_db_ids]
 
 @app.get("/schema/custom/{db_id}")
 def schema_spider_list(db_id):
-    '''list all custom schemas'''
-    db_path = f"{custom_db_dir}/{db_id}.sqlite"
-    print(f'returning from {db_path}')
     return dump_db_json_schema(f'{custom_db_dir}/{db_id}.sqlite', db_id)
 
 @app.post("/schema/custom/")
-def schema_spider_create(schema: SQLiteSchema):
-    create_sqlite_file(schema.db_schema)
+def schema_custom_create(schema: SQLiteSchema):
+    sqlite_path = create_sqlite_file(schema.db_schema)
     db_id = schema.db_schema['db_id']
-    db_path = f"{custom_db_dir}/{db_id}/{db_id}.sqlite"
-    json_path = f"{custom_db_dir}/{db_id}/{db_id}.json"
-    # create parent if it doesn't exist
-    Path(f'{custom_db_dir}/{db_id}').mkdir(parents=True, exist_ok=True)
-    with open(json_path, 'w') as f:
-        json.dump(schema.db_schema, f)
-    return dump_db_json_schema(db_path, db_id)
+    return dump_db_json_schema(sqlite_path, db_id)
 
 @app.get("/schema/spider/{db_id}")
 def schema_spider_get(db_id):
@@ -99,15 +126,24 @@ def resdsql_query(user_query: UserQuery):
     if user_query.db_type == 'custom':
         _path = f"{custom_db_dir}/{user_query.db_id}.sqlite"
 
-    temp_file_stem = f'{uuid.uuid4()}'
-    Path(f'data/custom').mkdir(parents=True, exist_ok=True)
-    with open(f'data/custom/{temp_file_stem}_input.json', 'w') as f:
+    temp_query_file_stem = f'{uuid.uuid4()}'
+    input_path = f'{query_dir}/{temp_query_file_stem}_input.json'
+    # write input to file
+    with open(f'{input_path}', 'w') as f:
         json.dump(data, f)
-    result = os.system(f'sh scripts/inference/infer_text2sql.sh large custom {temp_file_stem}')
+    # write schema to file
+    schema_json_path = get_schema_json_path(user_query.db_id, temp_query_file_stem)
+
+    logger.info(f'input_path is {input_path} and schema json path is {schema_json_path}')
+    result = os.system(f'sh scripts/inference/infer_text2sql.sh large {user_query.db_type} {temp_query_file_stem}')
     print(f'inference script result : {result}')
 
     # read the result
     output = ""
-    with open(f'predictions/{temp_file_stem}.sql', 'r') as f:
+    output_path = f'/data/query/{temp_query_file_stem}_output.sql'
+    if not os.path.exists(output_path):
+        raise HTTPException(status_code=400, detail=f"output file {output_path} not found")
+
+    with open(output_path, 'r') as f:
         output = f.read()
     return {"result": output}

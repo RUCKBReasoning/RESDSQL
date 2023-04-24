@@ -26,10 +26,11 @@ suffix=""
 if [ $2 = "spider" ]
 then
     # spider's dev set
-    table_path="./data/spider/tables.json"
-    input_dataset_path="./data/spider/test.json"
-    db_path="./data/spider/database"
-    output="./predictions/Spider-dev/$model_name/pred.sql"
+    table_path="/data/spider/tables.json"
+    input_dataset_path="/data/query/$3_input.json"
+    db_path="/data/spider/database"
+    # output="./predictions/Spider-dev/$model_name/pred.sql"
+    output="/data/query/$3_output.sql"
 elif [ $2 = "spider-realistic" ]
 then
     # spider-realistic
@@ -166,11 +167,24 @@ then
     else
         echo "The third arg is $3"
     fi
-    table_path="./data/custom/$3_tables.json"
-    input_dataset_path="./data/custom/$3_input.json"
-    db_path="./data/custom/$3.sqllite"
-    output="./predictions/$3.sql"
+    table_path="/data/query/$3_schema.json"
+    input_dataset_path="/data/query/$3_input.json"
+    db_path="/data/custom/database"
+    output="/data/query/$3_output.sql"
+    echo "out file is $output"
     suffix=$3
+    # check if schema json exists
+    if [ ! -f $table_path ]
+    then
+        echo "The schema json file $table_path does not exist." >&2
+        exit 1
+    fi
+    # check if input json exists
+    if [ ! -f $input_dataset_path ]
+    then
+        echo "The input json file $input_dataset_path does not exist." >&2
+        exit 1
+    fi
 else
     echo "The second arg must in [spider, spider-realistic, spider-syn, spider-dk, DB_schema_synonym, DB_schema_abbreviation, DB_DBcontent_equivalence, NLQ_keyword_synonym, NLQ_keyword_carrier, NLQ_column_synonym, NLQ_column_carrier, NLQ_column_attribute, NLQ_column_value, NLQ_value_synonym, NLQ_multitype, NLQ_others, SQL_comparison, SQL_sort_order, SQL_NonDB_number, SQL_DB_text, SQL_DB_number]."
     exit
@@ -184,6 +198,8 @@ python preprocessing.py \
     --output_dataset_path "./data/preprocessed_data/preprocessed_test_$suffix.json" \
     --db_path $db_path \
     --target_type "sql"
+
+
 
 # predict probability for each schema item
 python schema_item_classifier.py \
