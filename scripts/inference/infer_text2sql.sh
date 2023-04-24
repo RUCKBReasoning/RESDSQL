@@ -4,6 +4,7 @@ echo "Infer text2sql"
 device="0"
 
 ln -s /models ./models
+ln -s /data ./data
 
 if [ $1 = "base" ]
 then
@@ -171,7 +172,7 @@ then
     fi
     table_path="/data/query/$3_schema.json"
     input_dataset_path="/data/query/$3_input.json"
-    db_path="/data/custom/database"
+    db_path="/data/spider/database"
     output="/data/query/$3_output.sql"
     echo "out file is $output"
     suffix=$3

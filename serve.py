@@ -75,7 +75,6 @@ class SQLiteSchema(BaseModel):
 class UserQuery(BaseModel):
     db_id: Optional[str]
     query: str
-    db_type: Literal['spider', 'custom'] = 'spider'
 
 def get_schema_json_path(db_id, temp_query_file_stem):
     if db_id in spider_db_ids:
@@ -123,8 +122,10 @@ def resdsql_query(user_query: UserQuery):
 
     data = [{"db_id": user_query.db_id, "question": user_query.query, "query": ""}]
 
-    if user_query.db_type == 'custom':
-        _path = f"{custom_db_dir}/{user_query.db_id}.sqlite"
+    db_type = 'spider'
+    if user_query.db_id not in spider_db_ids:
+        db_type = 'custom'
+
 
     temp_query_file_stem = f'{uuid.uuid4()}'
     input_path = f'{query_dir}/{temp_query_file_stem}_input.json'
@@ -135,7 +136,7 @@ def resdsql_query(user_query: UserQuery):
     schema_json_path = get_schema_json_path(user_query.db_id, temp_query_file_stem)
 
     logger.info(f'input_path is {input_path} and schema json path is {schema_json_path}')
-    result = os.system(f'sh scripts/inference/infer_text2sql.sh large {user_query.db_type} {temp_query_file_stem}')
+    result = os.system(f'sh scripts/inference/infer_text2sql.sh large {db_type} {temp_query_file_stem}')
     print(f'inference script result : {result}')
 
     # read the result
