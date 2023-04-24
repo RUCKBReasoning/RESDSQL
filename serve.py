@@ -116,9 +116,11 @@ def schema_spider_get(db_id):
 
 @app.post("/resdsql/query")
 def resdsql_query(user_query: UserQuery):
-    # either db_id or scheme should be provided
     if user_query.db_id is None:
-        raise HTTPException(status_code=400, detail="Either db_id or scheme should be provided")
+        raise HTTPException(status_code=400, detail="db_id is required")
+    
+    if user_query.db_id not in get_db_dict():
+        raise HTTPException(status_code=400, detail=f"db_id {user_query.db_id} does not exist")
 
     data = [{"db_id": user_query.db_id, "question": user_query.query, "query": ""}]
 
