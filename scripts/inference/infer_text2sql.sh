@@ -3,8 +3,8 @@ echo "Infer text2sql"
 
 device="0"
 
-ln -s /models ./models
-ln -s /data ./data
+ln -sf /models ./models
+ln -sf /data ./data
 
 if [ $1 = "base" ]
 then
