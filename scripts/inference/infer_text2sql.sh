@@ -3,6 +3,8 @@ echo "Infer text2sql"
 
 device="0"
 
+ln -s /models ./models
+
 if [ $1 = "base" ]
 then
     text2sql_model_save_path="./models/text2sql-t5-base/checkpoint-39312"
