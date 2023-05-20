@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from transformers import AutoConfig, RobertaModel
+from transformers import AutoConfig, RobertaModel, XLMRobertaModel
 
 class MyClassifier(nn.Module):
     def __init__(
@@ -11,14 +11,14 @@ class MyClassifier(nn.Module):
         mode
     ):
         super(MyClassifier, self).__init__()
-
+        model_class = XLMRobertaModel if "xlm" in model_name_or_path else RobertaModel
         if mode in ["eval", "test"]:
             # load config
             config = AutoConfig.from_pretrained(model_name_or_path)
             # randomly initialize model's parameters according to the config
-            self.plm_encoder = RobertaModel(config)
+            self.plm_encoder = model_class(config)
         elif mode == "train":
-            self.plm_encoder = RobertaModel.from_pretrained(model_name_or_path)
+            self.plm_encoder = model_class.from_pretrained(model_name_or_path)
             self.plm_encoder.resize_token_embeddings(vocab_size)
         else:
             raise ValueError()

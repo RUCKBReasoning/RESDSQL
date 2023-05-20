@@ -1,0 +1,3104 @@
+[
+  {
+    "NatSQL": "select count ( singer.* )  from singer "
+  },
+  {
+    "NatSQL": "select count ( singer.* )  from singer "
+  },
+  {
+    "NatSQL": "select singer.Name , singer.Country , singer.Age from singer  order by singer.Age desc"
+  },
+  {
+    "NatSQL": "select singer.Name , singer.Country , singer.Age from singer  order by singer.Age desc"
+  },
+  {
+    "NatSQL": "select avg ( singer.Age )  , min ( singer.Age )  , max ( singer.Age )  from singer  where  singer.Country = \"法国\" "
+  },
+  {
+    "NatSQL": "select avg ( singer.Age )  , min ( singer.Age )  , max ( singer.Age )  from singer  where  singer.Country = \"法国\" "
+  },
+  {
+    "NatSQL": "select singer.Song_Name , singer.Song_release_year from singer  order by singer.Age asc limit 1"
+  },
+  {
+    "NatSQL": "select singer.Song_Name , singer.Song_release_year from singer  order by singer.Age asc limit 1"
+  },
+  {
+    "NatSQL": "select  distinct singer.Country from singer  where  singer.Age > 20 "
+  },
+  {
+    "NatSQL": "select  distinct singer.Country from singer  where  singer.Age > 20 "
+  },
+  {
+    "NatSQL": "select singer.Country , count ( singer.* )  from singer  group by singer.Country "
+  },
+  {
+    "NatSQL": "select singer.Country , count ( singer.* )  from singer  group by singer.Country "
+  },
+  {
+    "NatSQL": "select singer.Song_Name from singer  where  @.@ > avg ( singer.Age )  "
+  },
+  {
+    "NatSQL": "select singer.Song_Name from singer  where  @.@ > avg ( singer.Age )  "
+  },
+  {
+    "NatSQL": "select stadium.Location , stadium.Name from stadium  where  stadium.Capacity between 5000 and 10000 "
+  },
+  {
+    "NatSQL": "select stadium.Location , stadium.Name from stadium  where  stadium.Capacity between 5000 and 10000 "
+  },
+  {
+    "NatSQL": "select max ( stadium.Capacity )  ,  stadium.average  from stadium "
+  },
+  {
+    "NatSQL": "select avg ( stadium.Capacity )  , max ( stadium.Capacity )  from stadium "
+  },
+  {
+    "NatSQL": "select stadium.Name , stadium.Capacity from stadium  order by stadium.Average desc limit 1"
+  },
+  {
+    "NatSQL": "select stadium.Name , stadium.Capacity from stadium  order by stadium.Average desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( concert.* )  from concert  where  concert.Year = 2014  or  concert.Year = 2015 "
+  },
+  {
+    "NatSQL": "select count ( concert.* )  from concert  where  concert.Year = 2014  or  concert.Year = 2015 "
+  },
+  {
+    "NatSQL": "select stadium.Name , count ( concert.* )  from concert  group by concert.Stadium_ID "
+  },
+  {
+    "NatSQL": "select stadium.Name , count ( concert.* )  from concert  group by concert.Stadium_ID "
+  },
+  {
+    "NatSQL": "select stadium.Name , stadium.Capacity from concert  where  concert.Year >= 2014  group by stadium.Stadium_ID  order by count ( concert.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select stadium.Name , stadium.Capacity from concert  where  concert.Year > 2013  group by stadium.Stadium_ID  order by count ( concert.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select concert.Year from concert  group by concert.Year  order by count ( concert.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select concert.Year from concert  group by concert.Year  order by count ( concert.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select stadium.Name from stadium  where  @.@ not in concert.* "
+  },
+  {
+    "NatSQL": "select stadium.Name from stadium  where  @.@ not in concert.* "
+  },
+  {
+    "NatSQL": "select singer.Country from singer  where  singer.Age > 40  and  singer.Age < 30 "
+  },
+  {
+    "NatSQL": "select stadium.Name from stadium  where  except_  @.@ is stadium.*  and  concert.Year = 2014 "
+  },
+  {
+    "NatSQL": "select stadium.Name from stadium  where  except_  @.@ is stadium.*  and  concert.Year = 2014 "
+  },
+  {
+    "NatSQL": "select concert.concert_Name , concert.Theme , count ( singer_in_concert.* )  from singer_in_concert  group by concert.concert_ID "
+  },
+  {
+    "NatSQL": "select concert.concert_Name , concert.Theme , count ( singer_in_concert.* )  from singer_in_concert  group by concert.concert_ID "
+  },
+  {
+    "NatSQL": "select singer.Name , count ( singer_in_concert.* )  from singer_in_concert  group by singer.Singer_ID "
+  },
+  {
+    "NatSQL": "select singer.Name , count ( singer_in_concert.* )  from singer_in_concert  group by singer.Singer_ID "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  concert.Year = 2014 "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  concert.Year = 2014 "
+  },
+  {
+    "NatSQL": "select singer.Name , singer.Country from singer  where  singer.Song_Name like \"你\" "
+  },
+  {
+    "NatSQL": "select singer.Name , singer.Country from singer  where  singer.Song_Name like \"你\" "
+  },
+  {
+    "NatSQL": "select stadium.Name , stadium.Location from stadium  where  concert.Year = 2014  and  concert.Year = 2015 "
+  },
+  {
+    "NatSQL": "select stadium.Name , stadium.Location from stadium  where  concert.Year = 2014  and  concert.Year = 2015 "
+  },
+  {
+    "NatSQL": "select count ( concert.* )  from concert  order by stadium.Capacity desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( concert.* )  from concert  order by stadium.Capacity desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( pets.* )  from pets  where  pets.weight > 10 "
+  },
+  {
+    "NatSQL": "select count ( pets.* )  from pets  where  pets.weight > 10 "
+  },
+  {
+    "NatSQL": "select pets.weight from pets  order by pets.pet_age asc limit 1"
+  },
+  {
+    "NatSQL": "select pets.weight from pets  order by pets.pet_age asc limit 1"
+  },
+  {
+    "NatSQL": "select max ( pets.weight )  , pets.PetType from pets  group by pets.PetType "
+  },
+  {
+    "NatSQL": "select max ( pets.weight )  , pets.PetType from pets  group by pets.PetType "
+  },
+  {
+    "NatSQL": "select count ( has_pet.* )  from has_pet  where  student.Age > 20 "
+  },
+  {
+    "NatSQL": "select count ( has_pet.* )  from has_pet  where  student.Age > 20 "
+  },
+  {
+    "NatSQL": "select count ( pets.* )  from pets  where  student.Sex = \"女\"  and  pets.PetType = \"狗\" "
+  },
+  {
+    "NatSQL": "select count ( pets.* )  from pets  where  student.Sex = \"女\"  and  pets.PetType = \"狗\" "
+  },
+  {
+    "NatSQL": "select count (  distinct pets.PetType )  from pets "
+  },
+  {
+    "NatSQL": "select count (  distinct pets.PetType )  from pets "
+  },
+  {
+    "NatSQL": "select  distinct student.Fname from student  where  pets.PetType = \"猫\"  or  pets.PetType = \"狗\" "
+  },
+  {
+    "NatSQL": "select  distinct student.Fname from student  where  pets.PetType = \"猫\"  or  pets.PetType = \"狗\" "
+  },
+  {
+    "NatSQL": "select student.Fname from student  where  pets.PetType = \"猫\"  and  pets.PetType = \"狗\" "
+  },
+  {
+    "NatSQL": "select student.Fname from student  where  pets.PetType = \"猫\"  and  pets.PetType = \"狗\" "
+  },
+  {
+    "NatSQL": "select student.Major , student.Age from student  where  @.@ not in student.*  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select student.Major , student.Age from student  where  @.@ not in student.*  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select student.StuID from student  where  except_  @.@ is pets.*  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select student.StuID from student  where  except_  @.@ is pets.*  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select student.Fname , student.Age from student  where  pets.PetType = \"狗\"  and  @.@ not in student.*  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select student.Fname , student.Age from student  where  pets.PetType = \"狗\"  and  @.@ not in student.*  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select pets.PetType , pets.weight from pets  order by pets.pet_age asc limit 1"
+  },
+  {
+    "NatSQL": "select pets.PetType , pets.weight from pets  order by pets.pet_age asc limit 1"
+  },
+  {
+    "NatSQL": "select pets.PetID , pets.weight from pets  where  pets.pet_age > 1 "
+  },
+  {
+    "NatSQL": "select pets.PetID , pets.weight from pets  where  pets.pet_age > 1 "
+  },
+  {
+    "NatSQL": "select avg ( pets.pet_age )  , max ( pets.pet_age )  , pets.PetType from pets  group by pets.PetType "
+  },
+  {
+    "NatSQL": "select avg ( pets.pet_age )  , max ( pets.pet_age )  , pets.PetType from pets  group by pets.PetType "
+  },
+  {
+    "NatSQL": "select avg ( pets.weight )  , pets.PetType from pets  group by pets.PetType "
+  },
+  {
+    "NatSQL": "select avg ( pets.weight )  , pets.PetType from pets  group by pets.PetType "
+  },
+  {
+    "NatSQL": "select  distinct student.Fname , student.Age from student  where  @.@ join has_pet.* "
+  },
+  {
+    "NatSQL": "select  distinct student.Fname , student.Age from student  where  @.@ join has_pet.* "
+  },
+  {
+    "NatSQL": "select has_pet.PetID from has_pet  where  student.LName = \"琳\" "
+  },
+  {
+    "NatSQL": "select has_pet.PetID from has_pet  where  student.LName = \"琳\" "
+  },
+  {
+    "NatSQL": "select count ( has_pet.* )  , student.StuID from student  group by student.StuID "
+  },
+  {
+    "NatSQL": "select count ( has_pet.* )  , student.StuID from student  group by student.StuID "
+  },
+  {
+    "NatSQL": "select student.Fname , student.Sex from student  where  count ( has_pet.* )  > 1  group by student.StuID "
+  },
+  {
+    "NatSQL": "select student.Fname , student.Sex from has_pet  where  count ( has_pet.* )  > 1  group by student.StuID "
+  },
+  {
+    "NatSQL": "select student.LName from student  where  pets.pet_age = 3  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select student.LName from student  where  pets.pet_age = 3  and  pets.PetType = \"猫\" "
+  },
+  {
+    "NatSQL": "select avg ( student.Age )  from student  where  @.@ not in has_pet.* "
+  },
+  {
+    "NatSQL": "select avg ( student.Age )  from student  where  @.@ not in has_pet.* "
+  },
+  {
+    "NatSQL": "select count ( continents.* )  from continents "
+  },
+  {
+    "NatSQL": "select count ( continents.* )  from continents "
+  },
+  {
+    "NatSQL": "select continents.ContId , continents.Continent , count ( countries.* )  from countries  group by continents.ContId "
+  },
+  {
+    "NatSQL": "select continents.ContId , continents.Continent , count ( countries.* )  from countries  group by continents.ContId "
+  },
+  {
+    "NatSQL": "select count ( countries.* )  from countries "
+  },
+  {
+    "NatSQL": "select count ( countries.* )  from countries "
+  },
+  {
+    "NatSQL": "select car_makers.FullName , car_makers.Id , count ( model_list.* )  from car_makers  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select car_makers.FullName , car_makers.Id , count ( model_list.* )  from car_makers  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  order by cars_data.Horsepower asc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  order by cars_data.Horsepower asc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  where  @.@ < avg ( cars_data.Weight )  "
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  where  @.@ < avg ( cars_data.Weight )  "
+  },
+  {
+    "NatSQL": "select  distinct car_makers.Maker from car_makers  where  cars_data.Year = \"1970\" "
+  },
+  {
+    "NatSQL": "select  distinct car_makers.Maker from car_makers  where  cars_data.Year = \"1970\" "
+  },
+  {
+    "NatSQL": "select car_names.Make , cars_data.Year from cars_data  where  @.@ = min ( cars_data.Year )  "
+  },
+  {
+    "NatSQL": "select car_names.Make , cars_data.Year from cars_data  where  @.@ = min ( cars_data.Year )  "
+  },
+  {
+    "NatSQL": "select  distinct model_list.Model from model_list  where  cars_data.Year > 1980 "
+  },
+  {
+    "NatSQL": "select  distinct model_list.Model from model_list  where  cars_data.Year > 1980 "
+  },
+  {
+    "NatSQL": "select continents.Continent , count ( car_makers.* )  from car_makers  group by continents.Continent "
+  },
+  {
+    "NatSQL": "select continents.Continent , count ( car_makers.* )  from car_makers  group by continents.Continent "
+  },
+  {
+    "NatSQL": "select countries.CountryName from car_makers  group by car_makers.Country  order by count ( car_makers.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select countries.CountryName from car_makers  group by car_makers.Country  order by count ( car_makers.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( model_list.* )  , car_makers.FullName  from model_list  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select count ( model_list.* )  , car_makers.FullName, car_makers.id   from model_list  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select cars_data.Accelerate from cars_data  where  car_names.Make = \"amc hornet sportabout (sw)\" "
+  },
+  {
+    "NatSQL": "select cars_data.Accelerate from cars_data  where  car_names.Make = \"amc hornet sportabout (sw)\" "
+  },
+  {
+    "NatSQL": "select count ( car_makers.* )  from car_makers  where  countries.CountryName = \"法国\" "
+  },
+  {
+    "NatSQL": "select count ( car_makers.* )  from car_makers  where  countries.CountryName = \"法国\" "
+  },
+  {
+    "NatSQL": "select count ( model_list.* )  from model_list  where  countries.CountryName = \"美国\" "
+  },
+  {
+    "NatSQL": "select count ( model_list.* )  from model_list  where  countries.CountryName = \"美国\" "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.MPG )  from cars_data  where  cars_data.Cylinders = 4 "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.MPG )  from cars_data  where  cars_data.Cylinders = 4 "
+  },
+  {
+    "NatSQL": "select min(cars_data.Weight) from cars_data  where  cars_data.Cylinders = 8  and  cars_data.Year = 1974"
+  },
+  {
+    "NatSQL": "select min(cars_data.Weight) from cars_data  where  cars_data.Cylinders = 8  and  cars_data.Year = 1974"
+  },
+  {
+    "NatSQL": "select model_list.Maker , model_list.Model from model_list "
+  },
+  {
+    "NatSQL": "select model_list.Maker , model_list.Model from model_list "
+  },
+  {
+    "NatSQL": "select countries.CountryName , countries.CountryId from car_makers  where  count ( car_makers.* )  >= 1  group by countries.CountryId "
+  },
+  {
+    "NatSQL": "select countries.CountryName , countries.CountryId from car_makers  where  count ( car_makers.* )  >= 1  group by countries.CountryId "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Horsepower > 150 "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Horsepower > 150 "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.Weight )  , cars_data.Year from cars_data  group by cars_data.Year "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.Weight )  , cars_data.Year from cars_data  group by cars_data.Year "
+  },
+  {
+    "NatSQL": "select countries.CountryName from car_makers  where  continents.Continent = \"欧洲\"  and  count ( car_makers.* )  >= 3  group by countries.CountryName "
+  },
+  {
+    "NatSQL": "select countries.CountryName from car_makers  where  continents.Continent = \"欧洲\"  and  count ( car_makers.* )  >= 3  group by countries.CountryName "
+  },
+  {
+    "NatSQL": "select cars_data.Horsepower , car_names.Make from car_names  where  cars_data.Cylinders = 3  order by cars_data.Horsepower desc limit 1"
+  },
+  {
+    "NatSQL": "select cars_data.Horsepower , car_names.Make from car_names  where  cars_data.Cylinders = 3  order by cars_data.Horsepower desc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.Model from cars_data  order by cars_data.MPG desc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  order by cars_data.MPG desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( cars_data.Horsepower )  from cars_data  where  cars_data.Year < 1980 "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.Horsepower )  from cars_data  where  cars_data.Year < 1980 "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.Edispl )  from car_names  where  car_names.Model = \"吉利\" "
+  },
+  {
+    "NatSQL": "select avg ( cars_data.Edispl )  from car_names  where  car_names.Model = \"吉利\" "
+  },
+  {
+    "NatSQL": "select max ( cars_data.Accelerate )  , cars_data.Cylinders from cars_data  group by cars_data.Cylinders "
+  },
+  {
+    "NatSQL": "select max ( cars_data.Accelerate )  , cars_data.Cylinders from cars_data  group by cars_data.Cylinders "
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  group by car_names.Model  order by count ( car_names.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  group by car_names.Model  order by count ( car_names.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Cylinders > 4 "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Cylinders > 4 "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Year = 1980 "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Year = 1980 "
+  },
+  {
+    "NatSQL": "select count ( model_list.* )  from model_list  where  car_makers.FullName = \"一汽\" "
+  },
+  {
+    "NatSQL": "select count ( model_list.* )  from model_list  where  car_makers.FullName = \"一汽\" "
+  },
+  {
+    "NatSQL": "select car_makers.FullName , car_makers.Id from model_list  where  count ( model_list.* )  > 3  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select car_makers.FullName , car_makers.Id from model_list  where  count ( model_list.* )  > 3  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select  distinct model_list.Model from car_names  where  car_makers.FullName = \"上汽\"  or  cars_data.Weight > 3500 "
+  },
+  {
+    "NatSQL": "select  distinct model_list.Model from car_names  where  car_makers.FullName = \"上汽\"  or  cars_data.Weight > 3500 "
+  },
+  {
+    "NatSQL": "select  distinct cars_data.Year from cars_data  where  cars_data.Weight between 3000 and 4000 "
+  },
+  {
+    "NatSQL": "select  distinct cars_data.Year from cars_data  where  cars_data.Weight between 3000 and 4000 "
+  },
+  {
+    "NatSQL": "select cars_data.Horsepower from cars_data  order by cars_data.Accelerate desc limit 1"
+  },
+  {
+    "NatSQL": "select cars_data.Horsepower from cars_data  order by cars_data.Accelerate desc limit 1"
+  },
+  {
+    "NatSQL": "select cars_data.Cylinders from cars_data  where  car_names.Model = \"吉利\"  order by cars_data.Accelerate asc limit 1"
+  },
+  {
+    "NatSQL": "select cars_data.Cylinders from cars_data  where  car_names.Model = \"吉利\"  order by cars_data.Accelerate asc limit 1"
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  @.@ > cars_data.Accelerate  order by cars_data.Horsepower desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  @.@ > cars_data.Accelerate  order by cars_data.Horsepower desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( countries.* )  from countries  where  count ( car_makers.* )  > 2 "
+  },
+  {
+    "NatSQL": "select count ( countries.* )  from countries  where  count ( car_makers.* )  > 2 "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Cylinders > 6 "
+  },
+  {
+    "NatSQL": "select count ( cars_data.* )  from cars_data  where  cars_data.Cylinders > 6 "
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  where  cars_data.Cylinders = 4  order by cars_data.Horsepower desc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.Model from car_names  where  cars_data.Cylinders = 4  order by cars_data.Horsepower desc limit 1"
+  },
+  {
+    "NatSQL": "select car_names.MakeId , car_names.Make from cars_data  where  cars_data.Cylinders <= 3  and  @.@ > min ( cars_data.Horsepower )  "
+  },
+  {
+    "NatSQL": "select car_names.MakeId , car_names.Make from cars_data  where  cars_data.Cylinders < 4  and  @.@ > min ( cars_data.Horsepower )  "
+  },
+  {
+    "NatSQL": "select max(cars_data.MPG) from cars_data  where  cars_data.Cylinders = 8  or  cars_data.Year < 1980"
+  },
+  {
+    "NatSQL": "select max(cars_data.MPG) from cars_data  where  cars_data.Cylinders = 8  or  cars_data.Year < 1980"
+  },
+  {
+    "NatSQL": "select  distinct model_list.Model from model_list  where  cars_data.Weight < 3500  and  car_makers.FullName != \"广汽\" "
+  },
+  {
+    "NatSQL": "select  distinct model_list.Model from model_list  where  cars_data.Weight < 3500  and  car_makers.FullName != \"广汽\" "
+  },
+  {
+    "NatSQL": "select countries.CountryName from countries  where  except_  @.@ is car_makers.* "
+  },
+  {
+    "NatSQL": "select countries.CountryName from countries  where  except_  @.@ is car_makers.* "
+  },
+  {
+    "NatSQL": "select car_makers.Id , car_makers.Maker from car_makers  where  count ( model_list.* )  >= 2  and  count ( car_names.* )  > 3  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select car_makers.Id , car_makers.Maker from car_makers  where  count ( model_list.* )  >= 2  and  count ( car_names.* )  > 3  group by car_makers.Id "
+  },
+  {
+    "NatSQL": "select countries.CountryId , countries.CountryName from countries  where  count ( car_makers.* )  > 3  or  model_list.Model = \"荣威\"  group by countries.CountryId "
+  },
+  {
+    "NatSQL": "select countries.CountryId , countries.CountryName from car_makers  where  count ( car_makers.* )  > 3  or  model_list.Model = \"荣威\"  group by countries.CountryId "
+  },
+  {
+    "NatSQL": "select airlines.Country from airlines  where  airlines.Airline = \"深圳航空公司\" "
+  },
+  {
+    "NatSQL": "select airlines.Country from airlines  where  airlines.Airline = \"深圳航空公司\" "
+  },
+  {
+    "NatSQL": "select airlines.Abbreviation from airlines  where  airlines.Airline = \"深圳航空公司\" "
+  },
+  {
+    "NatSQL": "select airlines.Abbreviation from airlines  where  airlines.Airline = \"深圳航空公司\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline , airlines.Abbreviation from airlines  where  airlines.Country = \"美国\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline , airlines.Abbreviation from airlines  where  airlines.Country = \"美国\" "
+  },
+  {
+    "NatSQL": "select airports.AirportCode , airports.AirportName from airports  where  airports.City = \"拉萨\" "
+  },
+  {
+    "NatSQL": "select airports.AirportCode , airports.AirportName from airports  where  airports.City = \"拉萨\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines "
+  },
+  {
+    "NatSQL": "select count ( airports.* )  from airports "
+  },
+  {
+    "NatSQL": "select count ( airports.* )  from airports "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  airlines.Abbreviation = \"UAL\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  airlines.Abbreviation = \"UAL\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines  where  airlines.Country = \"美国\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines  where  airlines.Country = \"美国\" "
+  },
+  {
+    "NatSQL": "select airports.City , airports.Country from airports  where  airports.AirportName = \"东方\" "
+  },
+  {
+    "NatSQL": "select airports.City , airports.Country from airports  where  airports.AirportName = \"东方\" "
+  },
+  {
+    "NatSQL": "select airports.AirportName from airports  where  airports.AirportCode = \"AKO\" "
+  },
+  {
+    "NatSQL": "select airports.AirportName from airports  where  airports.AirportCode = \"AKO\" "
+  },
+  {
+    "NatSQL": "select airports.AirportName from airports  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select airports.AirportName from airports  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  flights.SourceAirport = \"长沙\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  flights.SourceAirport = \"长沙\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  flights.DestAirport = \"天津\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  flights.DestAirport = \"天津\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"西安\"  and  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"西安\"  and  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airlines.Airline = \"深圳航空公司\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airlines.Airline = \"深圳航空公司\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines  where  airlines.Airline = \"南方航空\"  and  flights.DestAirport = \"虹桥\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines  where  airlines.Airline = \"南方航空\"  and  flights.DestAirport = \"虹桥\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines  where  airlines.Airline = \"南方航空\"  and  flights.SourceAirport = \"浦东\" "
+  },
+  {
+    "NatSQL": "select count ( airlines.* )  from airlines  where  airlines.Airline = \"南方航空\"  and  flights.SourceAirport = \"浦东\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\"  and  airlines.Airline = \"南方航空\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\"  and  airlines.Airline = \"南方航空\" "
+  },
+  {
+    "NatSQL": "select airports.City from flights  group by airports.City  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airports.City from flights  group by airports.City  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airports.City from airports  group by airports.City  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airports.City from airports  where  @.@ join flights.*  group by airports.City  order by count ( airports.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airports.AirportCode from airports  group by airports.AirportCode  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airports.AirportCode from airports  group by airports.AirportCode  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airports.AirportCode from airports  group by airports.AirportCode  order by count ( flights.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select airports.AirportCode from airports  group by airports.AirportCode  order by count ( flights.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  group by airlines.Airline  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  group by airlines.Airline  order by count ( flights.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select airlines.Abbreviation , airlines.Country from airlines  group by airlines.Airline  order by count ( flights.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select airlines.Abbreviation , airlines.Country from airlines  group by airlines.Airline  order by count ( flights.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.SourceAirport = \"浦东\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.SourceAirport = \"浦东\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.DestAirport = \"浦东\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.DestAirport = \"浦东\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.SourceAirport = \"长沙\"  and  flights.SourceAirport = \"白云\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.SourceAirport = \"长沙\"  and  flights.SourceAirport = \"白云\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.SourceAirport = \"白云\"  and  flights.SourceAirport != \"长沙\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from airlines  where  flights.SourceAirport = \"白云\"  and  flights.SourceAirport != \"长沙\" "
+  },
+  {
+    "NatSQL": "select airlines.Airline from flights  where  count ( flights.* )  > 10  group by airlines.Airline "
+  },
+  {
+    "NatSQL": "select airlines.Airline from flights  where  count ( flights.* )  > 10  group by airlines.Airline "
+  },
+  {
+    "NatSQL": "select airlines.Airline from flights  where  count ( flights.* )  < 200  group by airlines.Airline "
+  },
+  {
+    "NatSQL": "select airlines.Airline from flights  where  count ( flights.* )  < 200  group by airlines.Airline "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from airlines  where  airlines.Airline = \"南方航空\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  airlines.Airline = \"南方航空\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  flights.SourceAirport = \"长沙\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  flights.SourceAirport = \"长沙\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  flights.DestAirport = \"长沙\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  flights.DestAirport = \"长沙\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select flights.FlightNo from flights  where  airports.City = \"哈尔滨\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\"  or  airports.City = \"长春\" "
+  },
+  {
+    "NatSQL": "select count ( flights.* )  from flights  where  airports.City = \"哈尔滨\"  or  airports.City = \"长春\" "
+  },
+  {
+    "NatSQL": "select airports.AirportName from airports  where  @.@ not in flights.SourceAirport  and  @.@ not in flights.DestAirport "
+  },
+  {
+    "NatSQL": "select airports.AirportName from airports  where  @.@ not in flights.SourceAirport  and  @.@ not in flights.DestAirport "
+  },
+  {
+    "NatSQL": "select count ( employee.* )  from employee "
+  },
+  {
+    "NatSQL": "select count ( employee.* )  from employee "
+  },
+  {
+    "NatSQL": "select employee.Name from employee  order by employee.Age asc"
+  },
+  {
+    "NatSQL": "select employee.Name from employee  order by employee.Age asc"
+  },
+  {
+    "NatSQL": "select count ( employee.* )  , employee.City from employee  group by employee.City "
+  },
+  {
+    "NatSQL": "select count ( employee.* )  , employee.City from employee  group by employee.City "
+  },
+  {
+    "NatSQL": "select employee.City from employee  where  employee.Age < 30  and  count ( employee.* )  > 1  group by employee.City "
+  },
+  {
+    "NatSQL": "select employee.City from employee  where  employee.Age < 30  and  count ( employee.* )  > 1  group by employee.City "
+  },
+  {
+    "NatSQL": "select count ( shop.* )  , shop.Location from shop  group by shop.Location "
+  },
+  {
+    "NatSQL": "select count ( shop.* )  , shop.Location from shop  group by shop.Location "
+  },
+  {
+    "NatSQL": "select shop.Manager_name , shop.District from shop  order by shop.Number_products desc limit 1"
+  },
+  {
+    "NatSQL": "select shop.Manager_name , shop.District from shop  order by shop.Number_products desc limit 1"
+  },
+  {
+    "NatSQL": "select min ( shop.Number_products )  , max ( shop.Number_products )  from shop "
+  },
+  {
+    "NatSQL": "select min ( shop.Number_products )  , max ( shop.Number_products )  from shop "
+  },
+  {
+    "NatSQL": "select shop.Name , shop.Location , shop.District from shop  order by shop.Number_products desc"
+  },
+  {
+    "NatSQL": "select shop.Name , shop.Location , shop.District from shop  order by shop.Number_products desc"
+  },
+  {
+    "NatSQL": "select shop.Name from shop  where  @.@ > avg ( shop.Number_products )  "
+  },
+  {
+    "NatSQL": "select shop.Name from shop  where  @.@ > avg ( shop.Number_products )  "
+  },
+  {
+    "NatSQL": "select employee.Name from evaluation  group by evaluation.Employee_ID  order by count ( evaluation.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select employee.Name from evaluation  group by evaluation.Employee_ID  order by count ( evaluation.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select employee.Name from employee  order by evaluation.Bonus desc limit 1"
+  },
+  {
+    "NatSQL": "select employee.Name from employee  order by evaluation.Bonus desc limit 1"
+  },
+  {
+    "NatSQL": "select employee.Name from employee  where  @.@ not in evaluation.* "
+  },
+  {
+    "NatSQL": "select employee.Name from employee  where  @.@ not in evaluation.* "
+  },
+  {
+    "NatSQL": "select shop.Name from hiring  group by hiring.Shop_ID  order by count ( hiring.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select shop.Name from hiring  group by hiring.Shop_ID  order by count ( hiring.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select shop.Name from shop  where  @.@ not in hiring.* "
+  },
+  {
+    "NatSQL": "select shop.Name from shop  where  @.@ not in hiring.* "
+  },
+  {
+    "NatSQL": "select count ( hiring.* )  , shop.Name from hiring  group by shop.Name "
+  },
+  {
+    "NatSQL": "select count ( hiring.* )  , shop.Name from hiring  group by shop.Name "
+  },
+  {
+    "NatSQL": "select sum ( evaluation.Bonus )  from evaluation "
+  },
+  {
+    "NatSQL": "select sum ( evaluation.Bonus )  from evaluation "
+  },
+  {
+    "NatSQL": "select hiring.* from hiring "
+  },
+  {
+    "NatSQL": "select hiring.* from hiring "
+  },
+  {
+    "NatSQL": "select shop.District from shop  where  shop.Number_products < 3000  and  shop.Number_products > 10000 "
+  },
+  {
+    "NatSQL": "select shop.District from shop  where  shop.Number_products < 3000  and  shop.Number_products > 10000 "
+  },
+  {
+    "NatSQL": "select count (  distinct shop.Location )  from shop "
+  },
+  {
+    "NatSQL": "select count (  distinct shop.Location )  from shop "
+  },
+  {
+    "NatSQL": "select count ( documents.* )  from documents "
+  },
+  {
+    "NatSQL": "select count ( documents.* )  from documents "
+  },
+  {
+    "NatSQL": "select documents.Document_ID , documents.Document_Name , documents.Document_Description from documents "
+  },
+  {
+    "NatSQL": "select documents.Document_ID , documents.Document_Name , documents.Document_Description from documents "
+  },
+  {
+    "NatSQL": "select documents.Document_Name , documents.Template_ID from documents  where  documents.Document_Description like \"w\" "
+  },
+  {
+    "NatSQL": "select documents.Document_Name , documents.Template_ID from documents  where  documents.Document_Description like \"w\" "
+  },
+  {
+    "NatSQL": "select documents.Document_ID , documents.Template_ID , documents.Document_Description from documents  where  documents.Document_Name = \"罗超的简历\" "
+  },
+  {
+    "NatSQL": "select documents.Document_ID , documents.Template_ID , documents.Document_Description from documents  where  documents.Document_Name = \"罗超的简历\" "
+  },
+  {
+    "NatSQL": "select count (  distinct documents.Template_ID )  from documents "
+  },
+  {
+    "NatSQL": "select count (  distinct documents.Template_ID )  from documents "
+  },
+  {
+    "NatSQL": "select count ( documents.* )  from documents  where  templates.Template_Type_Code = \"PPT\" "
+  },
+  {
+    "NatSQL": "select count ( documents.* )  from documents  where  templates.Template_Type_Code = \"PPT\" "
+  },
+  {
+    "NatSQL": "select documents.Template_ID , count ( documents.* )  from documents  group by documents.Template_ID "
+  },
+  {
+    "NatSQL": "select documents.Template_ID , count ( documents.* )  from documents  group by documents.Template_ID "
+  },
+  {
+    "NatSQL": "select templates.Template_ID , templates.Template_Type_Code from documents  group by documents.Template_ID  order by count ( documents.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select templates.Template_ID , templates.Template_Type_Code from documents  group by documents.Template_ID  order by count ( documents.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select documents.Template_ID from documents  where  count ( documents.* )  > 1  group by documents.Template_ID "
+  },
+  {
+    "NatSQL": "select documents.Template_ID from documents  where  count ( documents.* )  > 1  group by documents.Template_ID "
+  },
+  {
+    "NatSQL": "select templates.Template_ID from templates  where  except_  @.@ is documents.* "
+  },
+  {
+    "NatSQL": "select templates.Template_ID from templates  where  except_  @.@ is documents.* "
+  },
+  {
+    "NatSQL": "select count ( templates.* )  from templates "
+  },
+  {
+    "NatSQL": "select count ( templates.* )  from templates "
+  },
+  {
+    "NatSQL": "select templates.Template_ID , templates.Version_Number , templates.Template_Type_Code from templates "
+  },
+  {
+    "NatSQL": "select templates.Template_ID , templates.Version_Number , templates.Template_Type_Code from templates "
+  },
+  {
+    "NatSQL": "select  distinct templates.Template_Type_Code from templates "
+  },
+  {
+    "NatSQL": "select  distinct templates.Template_Type_Code from templates "
+  },
+  {
+    "NatSQL": "select templates.Template_ID from templates  where  templates.Template_Type_Code = \"PP\"  or  templates.Template_Type_Code = \"PPT\" "
+  },
+  {
+    "NatSQL": "select templates.Template_ID from templates  where  templates.Template_Type_Code = \"PP\"  or  templates.Template_Type_Code = \"PPT\" "
+  },
+  {
+    "NatSQL": "select count ( templates.* )  from templates  where  templates.Template_Type_Code = \"简历\" "
+  },
+  {
+    "NatSQL": "select count ( templates.* )  from templates  where  templates.Template_Type_Code = \"简历\" "
+  },
+  {
+    "NatSQL": "select templates.Version_Number , templates.Template_Type_Code from templates  where  templates.Version_Number > 5 "
+  },
+  {
+    "NatSQL": "select templates.Version_Number , templates.Template_Type_Code from templates  where  templates.Version_Number > 5 "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code , count ( templates.* )  from templates  group by templates.Template_Type_Code "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code , count ( templates.* )  from templates  group by templates.Template_Type_Code "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  group by templates.Template_Type_Code  order by count ( templates.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  group by templates.Template_Type_Code  order by count ( templates.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  where  count ( templates.* )  < 3  group by templates.Template_Type_Code "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  where  count ( templates.* )  < 3  group by templates.Template_Type_Code "
+  },
+  {
+    "NatSQL": "select min(templates.Version_Number) , templates.Template_Type_Code from templates"
+  },
+  {
+    "NatSQL": "select min(templates.Version_Number) , templates.Template_Type_Code from templates"
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  where  documents.Document_Name = \"数据库\" "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  where  documents.Document_Name = \"数据库\" "
+  },
+  {
+    "NatSQL": "select documents.Document_Name from templates  where  templates.Template_Type_Code = \"BK\" "
+  },
+  {
+    "NatSQL": "select documents.Document_Name from templates  where  templates.Template_Type_Code = \"BK\" "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code , count ( documents.* )  from documents  group by templates.Template_Type_Code "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code , count ( documents.* )  from documents  group by templates.Template_Type_Code "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from documents  group by templates.Template_Type_Code  order by count ( documents.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from documents  group by templates.Template_Type_Code  order by count ( documents.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  where  except_  @.@ is documents.* "
+  },
+  {
+    "NatSQL": "select templates.Template_Type_Code from templates  where  except_  @.@ is documents.* "
+  },
+  {
+    "NatSQL": "select ref_template_types.Template_Type_Code , ref_template_types.Template_Type_Description from ref_template_types "
+  },
+  {
+    "NatSQL": "select ref_template_types.Template_Type_Code , ref_template_types.Template_Type_Description from ref_template_types "
+  },
+  {
+    "NatSQL": "select ref_template_types.Template_Type_Description from ref_template_types  where  ref_template_types.Template_Type_Code = \"广告\" "
+  },
+  {
+    "NatSQL": "select ref_template_types.Template_Type_Description from ref_template_types  where  ref_template_types.Template_Type_Code = \"广告\" "
+  },
+  {
+    "NatSQL": "select ref_template_types.Template_Type_Code from ref_template_types  where  ref_template_types.Template_Type_Description = \"书本\" "
+  },
+  {
+    "NatSQL": "select ref_template_types.Template_Type_Code from ref_template_types  where  ref_template_types.Template_Type_Description = \"书本\" "
+  },
+  {
+    "NatSQL": "select  distinct ref_template_types.Template_Type_Description from ref_template_types  where  @.@ join documents.* "
+  },
+  {
+    "NatSQL": "select  distinct ref_template_types.Template_Type_Description from ref_template_types  where  @.@ join documents.* "
+  },
+  {
+    "NatSQL": "select templates.Template_ID from ref_template_types  where  ref_template_types.Template_Type_Description = \"演示\" "
+  },
+  {
+    "NatSQL": "select templates.Template_ID from templates  where  ref_template_types.Template_Type_Description = \"演示\" "
+  },
+  {
+    "NatSQL": "select count ( paragraphs.* )  from paragraphs "
+  },
+  {
+    "NatSQL": "select count ( paragraphs.* )  from paragraphs "
+  },
+  {
+    "NatSQL": "select count ( paragraphs.* )  from paragraphs  where  documents.Document_Name = \"夏日游览\" "
+  },
+  {
+    "NatSQL": "select count ( paragraphs.* )  from paragraphs  where  documents.Document_Name = \"夏日游览\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Other_Details from paragraphs  where  paragraphs.Paragraph_Text like \"韩文\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Other_Details from paragraphs  where  paragraphs.Paragraph_Text like \"韩文\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Paragraph_ID , paragraphs.Paragraph_Text from paragraphs  where  documents.Document_Name = \"上海欢迎你\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Paragraph_ID , paragraphs.Paragraph_Text from paragraphs  where  documents.Document_Name = \"上海欢迎你\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Paragraph_Text from paragraphs  where  documents.Document_Name = \"顾客评价\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Paragraph_Text from paragraphs  where  documents.Document_Name = \"顾客评价\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID , count ( paragraphs.* )  from paragraphs  group by paragraphs.Document_ID  order by paragraphs.Document_ID asc"
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID , count ( paragraphs.* )  from paragraphs  group by paragraphs.Document_ID  order by paragraphs.Document_ID asc"
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID , documents.Document_Name , count ( paragraphs.* )  from paragraphs  group by paragraphs.Document_ID "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID , documents.Document_Name , count ( paragraphs.* )  from paragraphs  group by paragraphs.Document_ID "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  where  count ( paragraphs.* )  >= 2  group by paragraphs.Document_ID "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  where  count ( paragraphs.* )  >= 2  group by paragraphs.Document_ID "
+  },
+  {
+    "NatSQL": "select documents.Document_ID , documents.Document_Name from paragraphs  group by paragraphs.Document_ID  order by count ( paragraphs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select documents.Document_ID , documents.Document_Name from paragraphs  group by paragraphs.Document_ID  order by count ( paragraphs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  group by paragraphs.Document_ID  order by count ( paragraphs.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  group by paragraphs.Document_ID  order by count ( paragraphs.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  where  count ( paragraphs.* )  between 1 and 2  group by paragraphs.Document_ID "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  where  count ( paragraphs.* )  between 1 and 2  group by paragraphs.Document_ID "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  where  paragraphs.Paragraph_Text = \"巴西\"  and  paragraphs.Paragraph_Text = \"爱尔兰\" "
+  },
+  {
+    "NatSQL": "select paragraphs.Document_ID from paragraphs  where  paragraphs.Paragraph_Text = \"巴西\"  and  paragraphs.Paragraph_Text = \"爱尔兰\" "
+  },
+  {
+    "NatSQL": "select count ( teacher.* )  from teacher "
+  },
+  {
+    "NatSQL": "select count ( teacher.* )  from teacher "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  order by teacher.Age asc"
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  order by teacher.Age asc"
+  },
+  {
+    "NatSQL": "select teacher.Age , teacher.Hometown from teacher "
+  },
+  {
+    "NatSQL": "select teacher.Age , teacher.Hometown from teacher "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  where  teacher.Hometown != \"下城区\" "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  where  teacher.Hometown != \"下城区\" "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  where  teacher.Age = 32  or  teacher.Age = 33 "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  where  teacher.Age = 32  or  teacher.Age = 33 "
+  },
+  {
+    "NatSQL": "select teacher.Hometown from teacher  order by teacher.Age asc limit 1"
+  },
+  {
+    "NatSQL": "select teacher.Hometown from teacher  order by teacher.Age asc limit 1"
+  },
+  {
+    "NatSQL": "select teacher.Hometown , count ( teacher.* )  from teacher  group by teacher.Hometown "
+  },
+  {
+    "NatSQL": "select teacher.Hometown , count ( teacher.* )  from teacher  group by teacher.Hometown "
+  },
+  {
+    "NatSQL": "select teacher.Hometown from teacher  group by teacher.Hometown  order by count ( teacher.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select teacher.Hometown from teacher  group by teacher.Hometown  order by count ( teacher.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select teacher.Hometown from teacher  where  count ( teacher.* )  >= 2  group by teacher.Hometown "
+  },
+  {
+    "NatSQL": "select teacher.Hometown from teacher  where  count ( teacher.* )  >= 2  group by teacher.Hometown "
+  },
+  {
+    "NatSQL": "select teacher.Name , course.Course from teacher "
+  },
+  {
+    "NatSQL": "select teacher.Name , course.Course from teacher "
+  },
+  {
+    "NatSQL": "select teacher.Name , course.Course from course_arrange  order by teacher.Name asc"
+  },
+  {
+    "NatSQL": "select teacher.Name , course.Course from course_arrange  order by teacher.Name asc"
+  },
+  {
+    "NatSQL": "select teacher.Name from course_arrange  where  course.Course = \"数学\" "
+  },
+  {
+    "NatSQL": "select teacher.Name from course_arrange  where  course.Course = \"数学\" "
+  },
+  {
+    "NatSQL": "select teacher.Name , count ( course_arrange.* )  from course_arrange  group by teacher.Name "
+  },
+  {
+    "NatSQL": "select teacher.Name , count ( course_arrange.* )  from course_arrange  group by teacher.Name "
+  },
+  {
+    "NatSQL": "select teacher.Name from course_arrange  where  count ( course_arrange.* )  >= 2  group by teacher.Name "
+  },
+  {
+    "NatSQL": "select teacher.Name from course_arrange  where  count ( course_arrange.* )  >= 2  group by teacher.Name "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  where  @.@ not in course_arrange.* "
+  },
+  {
+    "NatSQL": "select teacher.Name from teacher  where  @.@ not in course_arrange.* "
+  },
+  {
+    "NatSQL": "select count ( visitor.* )  from visitor  where  visitor.Age < 30 "
+  },
+  {
+    "NatSQL": "select visitor.Name from visitor  where  visitor.Level_of_membership > 4  order by visitor.Level_of_membership desc"
+  },
+  {
+    "NatSQL": "select avg ( visitor.Age )  from visitor  where  visitor.Level_of_membership <= 4 "
+  },
+  {
+    "NatSQL": "select visitor.Name , visitor.Level_of_membership from visitor  where  visitor.Level_of_membership > 4  order by visitor.Age desc"
+  },
+  {
+    "NatSQL": "select museum.Museum_ID , museum.Name from museum  order by museum.Num_of_Staff desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( museum.Num_of_Staff )  from museum  where  museum.Open_Year < 2009 "
+  },
+  {
+    "NatSQL": "select museum.Num_of_Staff , museum.Open_Year from museum  where  museum.Name = \"国家艺术馆\" "
+  },
+  {
+    "NatSQL": "select museum.Name from museum  where  @.@ > min ( museum.Num_of_Staff )   and  museum.Open_Year > 2010 "
+  },
+  {
+    "NatSQL": "select visitor.ID , visitor.Name , visitor.Age from visit  where  count ( visit.* )  > 1  group by visitor.ID "
+  },
+  {
+    "NatSQL": "select visit.visitor_id , visitor.Name , visitor.Level_of_membership from visitor  group by visit.visitor_ID  order by sum ( visit.Total_spent )  desc limit 1"
+  },
+  {
+    "NatSQL": "select museum.Museum_ID , museum.Name from visit  group by visit.Museum_ID  order by count ( visit.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select museum.Name from museum  where  @.@ not in visit.* "
+  },
+  {
+    "NatSQL": "select visitor.Name , visitor.Age from visitor  order by visit.Num_of_Ticket desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( visit.Num_of_Ticket )  , max ( visit.Num_of_Ticket )  from visit "
+  },
+  {
+    "NatSQL": "select sum ( visit.Total_spent )  from visitor  where  visitor.Level_of_membership = 1 "
+  },
+  {
+    "NatSQL": "select visitor.Name from visitor  where  museum.Open_Year < 2009  and  museum.Open_Year > 2011 "
+  },
+  {
+    "NatSQL": "select count ( visitor.* )  from visitor  where  @.@ not in visit.*  and  museum.Open_Year > 2010 "
+  },
+  {
+    "NatSQL": "select count ( museum.* )  from museum  where  museum.Open_Year > 2013  or  museum.Open_Year < 2008 "
+  },
+  {
+    "NatSQL": "select count ( players.* )  from players "
+  },
+  {
+    "NatSQL": "select count ( players.* )  from players "
+  },
+  {
+    "NatSQL": "select count ( matches.* )  from matches "
+  },
+  {
+    "NatSQL": "select count ( matches.* )  from matches "
+  },
+  {
+    "NatSQL": "select players.first_name , players.birth_date from players  where  players.country_code = \"中国\" "
+  },
+  {
+    "NatSQL": "select players.first_name , players.birth_date from players  where  players.country_code = \"中国\" "
+  },
+  {
+    "NatSQL": "select avg ( matches.loser_age )  , avg ( matches.winner_age )  from matches "
+  },
+  {
+    "NatSQL": "select avg ( matches.loser_age )  , avg ( matches.winner_age )  from matches "
+  },
+  {
+    "NatSQL": "select avg ( matches.winner_rank )  from matches "
+  },
+  {
+    "NatSQL": "select avg ( matches.winner_rank )  from matches "
+  },
+  {
+    "NatSQL": "select min ( matches.loser_rank )  from matches "
+  },
+  {
+    "NatSQL": "select min ( matches.loser_rank )  from matches "
+  },
+  {
+    "NatSQL": "select count (  distinct players.country_code )  from players "
+  },
+  {
+    "NatSQL": "select count (  distinct players.country_code )  from players "
+  },
+  {
+    "NatSQL": "select count (  distinct matches.loser_name )  from matches "
+  },
+  {
+    "NatSQL": "select count (  distinct matches.loser_name )  from matches "
+  },
+  {
+    "NatSQL": "select matches.tourney_name from matches  where  count ( matches.* )  > 10  group by matches.tourney_name "
+  },
+  {
+    "NatSQL": "select matches.tourney_name from matches  where  count ( matches.* )  > 10  group by matches.tourney_name "
+  },
+  {
+    "NatSQL": "select matches.winner_name from matches  where  matches.year = 2013  and  matches.year = 2016 "
+  },
+  {
+    "NatSQL": "select matches.winner_name from matches  where  matches.year = 2013  and  matches.year = 2016 "
+  },
+  {
+    "NatSQL": "select count ( matches.* )  from matches  where  matches.year = 2013  or  matches.year = 2016 "
+  },
+  {
+    "NatSQL": "select count ( matches.* )  from matches  where  matches.year = 2013  or  matches.year = 2016 "
+  },
+  {
+    "NatSQL": "select players.country_code , players.first_name from players  where  matches.tourney_name = \"WTA 锦标赛\"  and  matches.tourney_name = \"澳网\" "
+  },
+  {
+    "NatSQL": "select players.country_code , players.first_name from players  where  matches.tourney_name = \"WTA 锦标赛\"  and  matches.tourney_name = \"澳网\" "
+  },
+  {
+    "NatSQL": "select players.first_name , players.country_code from players  order by players.birth_date asc limit 1"
+  },
+  {
+    "NatSQL": "select players.first_name , players.country_code from players  order by players.birth_date asc limit 1"
+  },
+  {
+    "NatSQL": "select players.first_name , players.last_name from players  order by players.birth_date asc"
+  },
+  {
+    "NatSQL": "select players.first_name , players.last_name from players  order by players.birth_date asc"
+  },
+  {
+    "NatSQL": "select players.first_name , players.last_name from players  where  players.hand = \"左\"  order by players.birth_date asc"
+  },
+  {
+    "NatSQL": "select players.first_name , players.last_name from players  where  players.hand = \"左\"  order by players.birth_date asc"
+  },
+  {
+    "NatSQL": "select players.country_code , players.first_name from players  order by rankings.tours desc limit 1"
+  },
+  {
+    "NatSQL": "select players.country_code , players.first_name from players  order by rankings.tours desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.year from matches  group by matches.year  order by count ( matches.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.year from matches  group by matches.year  order by count ( matches.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.winner_name , matches.winner_rank_points from matches  group by matches.winner_name  order by count ( matches.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.winner_name , matches.winner_rank_points from matches  group by matches.winner_name  order by count ( matches.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.winner_name from matches  where  matches.tourney_name = \"澳网\"  order by matches.winner_rank_points desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.winner_name from matches  where  matches.tourney_name = \"澳网\"  order by matches.winner_rank_points desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.winner_name , matches.loser_name from matches  order by matches.minutes desc limit 1"
+  },
+  {
+    "NatSQL": "select matches.winner_name , matches.loser_name from matches  order by matches.minutes desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( rankings.ranking )  , players.first_name from players  group by players.first_name "
+  },
+  {
+    "NatSQL": "select avg ( rankings.ranking )  , players.first_name from players  group by players.first_name "
+  },
+  {
+    "NatSQL": "select sum ( rankings.ranking_points )  , players.first_name from players  group by players.first_name "
+  },
+  {
+    "NatSQL": "select sum ( rankings.ranking_points )  , players.first_name from players  group by players.first_name "
+  },
+  {
+    "NatSQL": "select count ( players.* )  , players.country_code from players  group by players.country_code "
+  },
+  {
+    "NatSQL": "select count ( players.* )  , players.country_code from players  group by players.country_code "
+  },
+  {
+    "NatSQL": "select players.country_code from players  group by players.country_code  order by count ( players.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select players.country_code from players  group by players.country_code  order by count ( players.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select players.country_code from players  where  count ( players.* )  > 50  group by players.country_code "
+  },
+  {
+    "NatSQL": "select players.country_code from players  where  count ( players.* )  > 50  group by players.country_code "
+  },
+  {
+    "NatSQL": "select sum ( rankings.tours )  , rankings.ranking_date from rankings  group by rankings.ranking_date "
+  },
+  {
+    "NatSQL": "select sum ( rankings.tours )  , rankings.ranking_date from rankings  group by rankings.ranking_date "
+  },
+  {
+    "NatSQL": "select count ( matches.* )  , matches.year from matches  group by matches.year "
+  },
+  {
+    "NatSQL": "select count ( matches.* )  , matches.year from matches  group by matches.year "
+  },
+  {
+    "NatSQL": "select  distinct matches.winner_name , matches.winner_rank from matches  order by matches.winner_age asc limit 3"
+  },
+  {
+    "NatSQL": "select  distinct matches.winner_name , matches.winner_rank from matches  order by matches.winner_age asc limit 3"
+  },
+  {
+    "NatSQL": "select count (  distinct matches.winner_name )  from matches  where  matches.tourney_name = \"WTA 锦标赛\"  and  matches.winner_hand = \"左\" "
+  },
+  {
+    "NatSQL": "select count (  distinct matches.winner_name )  from matches  where  matches.tourney_name = \"WTA 锦标赛\"  and  matches.winner_hand = \"左\" "
+  },
+  {
+    "NatSQL": "select players.first_name , players.country_code , players.birth_date from matches  order by matches.winner_rank_points desc limit 1"
+  },
+  {
+    "NatSQL": "select players.first_name , players.country_code , players.birth_date from players  order by matches.winner_rank_points desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( players.* )  , players.hand from players  group by players.hand "
+  },
+  {
+    "NatSQL": "select count ( players.* )  , players.hand from players  group by players.hand "
+  },
+  {
+    "NatSQL": "select count ( ship.* )  from ship  where  ship.disposition_of_ship = \"俘虏\" "
+  },
+  {
+    "NatSQL": "select ship.name , ship.tonnage from ship  order by ship.name desc"
+  },
+  {
+    "NatSQL": "select battle.name , battle.date from battle "
+  },
+  {
+    "NatSQL": "select max ( death.killed )  , min ( death.killed )  from death "
+  },
+  {
+    "NatSQL": "select avg ( death.injured )  from death "
+  },
+  {
+    "NatSQL": "select death.killed , death.injured from ship  where  ship.tonnage = \"t\" "
+  },
+  {
+    "NatSQL": "select battle.name , battle.result from battle  where  battle.bulgarian_commander != \"博瑞尔\" "
+  },
+  {
+    "NatSQL": "select  distinct battle.id , battle.name from battle  where  ship.ship_type = \"帆船\" "
+  },
+  {
+    "NatSQL": "select battle.id , battle.name from battle  where  sum ( death.killed )  > 10  group by battle.id "
+  },
+  {
+    "NatSQL": "select ship.id , ship.name from death  group by ship.id  order by count ( death.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select battle.name from battle  where  battle.bulgarian_commander = \"卡洛扬\"  and  battle.latin_commander = \"鲍德温一世\" "
+  },
+  {
+    "NatSQL": "select count (  distinct battle.result )  from battle "
+  },
+  {
+    "NatSQL": "select count ( battle.* )  from battle  where  @.@ not in ship.*  and  ship.tonnage = \"225\" "
+  },
+  {
+    "NatSQL": "select battle.name , battle.date from battle  where  ship.name = \"远征\"  and  ship.name = \"长征号\" "
+  },
+  {
+    "NatSQL": "select battle.name , battle.result , battle.bulgarian_commander from battle  where  except_  @.@ is ship.*  and  ship.location = \"英吉利海峡\" "
+  },
+  {
+    "NatSQL": "select death.note from death  where  death.note like \"东\" "
+  },
+  {
+    "NatSQL": "select addresses.line_1 , addresses.line_2 from addresses "
+  },
+  {
+    "NatSQL": "select addresses.line_1 , addresses.line_2 from addresses "
+  },
+  {
+    "NatSQL": "select count ( courses.* )  from courses "
+  },
+  {
+    "NatSQL": "select count ( courses.* )  from courses "
+  },
+  {
+    "NatSQL": "select courses.course_description from courses  where  courses.course_name = \"数学\" "
+  },
+  {
+    "NatSQL": "select courses.course_description from courses  where  courses.course_name = \"数学\" "
+  },
+  {
+    "NatSQL": "select addresses.zip_postcode from addresses  where  addresses.city = \"大连\" "
+  },
+  {
+    "NatSQL": "select addresses.zip_postcode from addresses  where  addresses.city = \"大连\" "
+  },
+  {
+    "NatSQL": "select departments.department_name , departments.department_id from degree_programs  group by degree_programs.department_id  order by count ( degree_programs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select departments.department_name , departments.department_id from degree_programs  group by degree_programs.department_id  order by count ( degree_programs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select count (  distinct degree_programs.department_id )  from degree_programs "
+  },
+  {
+    "NatSQL": "select count (  distinct degree_programs.department_id )  from degree_programs "
+  },
+  {
+    "NatSQL": "select count (  distinct degree_programs.degree_summary_name )  from degree_programs "
+  },
+  {
+    "NatSQL": "select count (  distinct degree_programs.degree_summary_name )  from degree_programs "
+  },
+  {
+    "NatSQL": "select count ( degree_programs.* )  from degree_programs  where  departments.department_name = \"摄影师\" "
+  },
+  {
+    "NatSQL": "select count ( degree_programs.* )  from degree_programs  where  departments.department_name = \"摄影师\" "
+  },
+  {
+    "NatSQL": "select sections.section_name , sections.section_description from sections "
+  },
+  {
+    "NatSQL": "select sections.section_name , sections.section_description from sections "
+  },
+  {
+    "NatSQL": "select courses.course_name , courses.course_id from sections  where  count ( sections.* )  <= 2  group by courses.course_id "
+  },
+  {
+    "NatSQL": "select courses.course_name , courses.course_id from sections  where  count ( sections.* )  <= 2  group by courses.course_id "
+  },
+  {
+    "NatSQL": "select sections.section_name from sections  order by sections.section_name desc"
+  },
+  {
+    "NatSQL": "select sections.section_name from sections  order by sections.section_name desc"
+  },
+  {
+    "NatSQL": "select semesters.semester_name , semesters.semester_id from semesters  where  @.@ join student_enrolment.*  group by semesters.semester_id  order by count ( semesters.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select semesters.semester_name , semesters.semester_id from semesters  where  @.@ join student_enrolment.*  group by semesters.semester_id  order by count ( semesters.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select departments.department_description from departments  where  departments.department_name like \"计算机\" "
+  },
+  {
+    "NatSQL": "select departments.department_description from departments  where  departments.department_name like \"计算机\" "
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name , students.student_id from student_enrolment  where  count ( student_enrolment.* )  = 2  group by students.student_id "
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name , students.student_id from student_enrolment  where  count ( student_enrolment.* )  = 2  group by students.student_id "
+  },
+  {
+    "NatSQL": "select  distinct students.first_name , students.middle_name , students.last_name from students  where  degree_programs.degree_summary_name = \"本科\" "
+  },
+  {
+    "NatSQL": "select  distinct students.first_name , students.middle_name , students.last_name from degree_programs  where  degree_programs.degree_summary_name = \"本科\" "
+  },
+  {
+    "NatSQL": "select degree_programs.degree_summary_name from student_enrolment  group by degree_programs.degree_summary_name  order by count ( student_enrolment.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select degree_programs.degree_summary_name from degree_programs  group by degree_programs.degree_summary_name  order by count ( student_enrolment.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select degree_programs.degree_program_id , degree_programs.degree_summary_name from degree_programs  group by degree_programs.degree_program_id  order by count ( student_enrolment.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select degree_programs.degree_program_id , degree_programs.degree_summary_name from student_enrolment  group by degree_programs.degree_program_id  order by count ( student_enrolment.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name , count ( student_enrolment.* )  , students.student_id , students.student_id from students  group by students.student_id  order by count ( student_enrolment.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name , count ( student_enrolment.* )  , students.student_id , students.student_id from student_enrolment  group by students.student_id  order by count ( student_enrolment.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select semesters.semester_name from semesters  where  @.@ not in student_enrolment.* "
+  },
+  {
+    "NatSQL": "select semesters.semester_name from semesters  where  @.@ not in student_enrolment.* "
+  },
+  {
+    "NatSQL": "select  distinct courses.course_name from courses  where  @.@ join student_enrolment_courses.* "
+  },
+  {
+    "NatSQL": "select  distinct courses.course_name from courses  where  @.@ join student_enrolment_courses.* "
+  },
+  {
+    "NatSQL": "select courses.course_name from student_enrolment_courses  group by courses.course_name  order by count ( student_enrolment_courses.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select courses.course_name from student_enrolment_courses  group by courses.course_name  order by count ( student_enrolment_courses.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select students.last_name from students  where  addresses.state_province_county = \"湖北\"  except_  @.@ join student_enrolment.* "
+  },
+  {
+    "NatSQL": "select students.last_name from students  where  addresses.state_province_county = \"湖北\"  except_  @.@ join student_enrolment.* "
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date , transcript_contents.transcript_id from transcripts  where  count ( transcripts.* )  >= 2  group by transcript_contents.transcript_id "
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date , transcript_contents.transcript_id from transcripts  where  count ( transcripts.* )  >= 2  group by transcript_contents.transcript_id "
+  },
+  {
+    "NatSQL": "select students.cell_mobile_number from students  where  students.first_name = \"钟\"  and  students.last_name = \"睿\" "
+  },
+  {
+    "NatSQL": "select students.cell_mobile_number from students  where  students.first_name = \"钟\"  and  students.last_name = \"睿\" "
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name from students  order by students.date_first_registered asc limit 1"
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name from students  order by students.date_first_registered asc limit 1"
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name from students  order by students.date_left asc limit 1"
+  },
+  {
+    "NatSQL": "select students.first_name , students.middle_name , students.last_name from students  order by students.date_left asc limit 1"
+  },
+  {
+    "NatSQL": "select students.first_name from students  where  students.current_address_id != students.permanent_address_id "
+  },
+  {
+    "NatSQL": "select students.first_name from students  where  students.current_address_id != students.permanent_address_id "
+  },
+  {
+    "NatSQL": "select addresses.address_id , addresses.line_1 , addresses.line_2 from addresses  group by addresses.address_id  order by count ( students.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select addresses.address_id , addresses.line_1 , addresses.line_2 from addresses  group by addresses.address_id  order by count ( students.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( transcripts.transcript_date )  from transcripts "
+  },
+  {
+    "NatSQL": "select avg ( transcripts.transcript_date )  from transcripts "
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date , transcripts.other_details from transcripts  order by transcripts.transcript_date asc limit 1"
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date , transcripts.other_details from transcripts  order by transcripts.transcript_date asc limit 1"
+  },
+  {
+    "NatSQL": "select count ( transcripts.* )  from transcripts "
+  },
+  {
+    "NatSQL": "select count ( transcripts.* )  from transcripts "
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date from transcripts  order by transcripts.transcript_date desc limit 1"
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date from transcripts  order by transcripts.transcript_date desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( transcript_contents.* )  , transcript_contents.student_course_id from transcript_contents  group by transcript_contents.student_course_id  order by count ( transcript_contents.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( transcript_contents.* )  , transcript_contents.student_course_id from transcript_contents  group by transcript_contents.student_course_id  order by count ( transcript_contents.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date , transcript_contents.transcript_id from transcript_contents  group by transcript_contents.transcript_id  order by count ( transcript_contents.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select transcripts.transcript_date , transcript_contents.transcript_id from transcript_contents  group by transcript_contents.transcript_id  order by count ( transcript_contents.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select  distinct student_enrolment.semester_id from degree_programs  where  degree_programs.degree_summary_name = \"硕士\"  and  degree_programs.degree_summary_name = \"本科\" "
+  },
+  {
+    "NatSQL": "select  distinct student_enrolment.semester_id from degree_programs  where  degree_programs.degree_summary_name = \"硕士\"  and  degree_programs.degree_summary_name = \"本科\" "
+  },
+  {
+    "NatSQL": "select count (  distinct students.current_address_id )  from students "
+  },
+  {
+    "NatSQL": "select count (  distinct students.current_address_id )  from students "
+  },
+  {
+    "NatSQL": "select students.other_student_details from students  order by students.other_student_details desc"
+  },
+  {
+    "NatSQL": "select students.other_student_details from students  order by students.other_student_details desc"
+  },
+  {
+    "NatSQL": "select sections.section_description from sections  where  sections.section_name = \"第三\" "
+  },
+  {
+    "NatSQL": "select sections.section_description from sections  where  sections.section_name = \"第三\" "
+  },
+  {
+    "NatSQL": "select students.first_name from students  where  addresses.country = \"海地\"  or  students.cell_mobile_number = \"09700166582\" "
+  },
+  {
+    "NatSQL": "select students.first_name from students  where  addresses.country = \"海地\"  or  students.cell_mobile_number = \"09700166582\" "
+  },
+  {
+    "NatSQL": "select cartoon.Title from cartoon  order by cartoon.Title asc"
+  },
+  {
+    "NatSQL": "select cartoon.Title from cartoon  order by cartoon.Title asc"
+  },
+  {
+    "NatSQL": "select cartoon.Title from cartoon  where  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select cartoon.Title from cartoon  where  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select count ( cartoon.* )  from cartoon  where  cartoon.Written_by = \"李辉\" "
+  },
+  {
+    "NatSQL": "select count ( cartoon.* )  from cartoon  where  cartoon.Written_by = \"李辉\" "
+  },
+  {
+    "NatSQL": "select cartoon.Title , cartoon.Directed_by from cartoon  order by cartoon.Original_air_date asc"
+  },
+  {
+    "NatSQL": "select cartoon.Title , cartoon.Directed_by from cartoon  order by cartoon.Original_air_date asc"
+  },
+  {
+    "NatSQL": "select cartoon.Title from cartoon  where  cartoon.Directed_by = \"黄伟明\"  or  cartoon.Directed_by = \"姜文\" "
+  },
+  {
+    "NatSQL": "select cartoon.Title from cartoon  where  cartoon.Directed_by = \"黄伟明\"  or  cartoon.Directed_by = \"姜文\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Country , count ( tv_channel.* )  from tv_channel  group by tv_channel.Country  order by count ( tv_channel.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select tv_channel.Country , count ( tv_channel.* )  from tv_channel  group by tv_channel.Country  order by count ( tv_channel.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select count (  distinct tv_channel.series_name )  , count (  distinct tv_channel.Content )  from tv_channel "
+  },
+  {
+    "NatSQL": "select count (  distinct tv_channel.series_name )  , count (  distinct tv_channel.Content )  from tv_channel "
+  },
+  {
+    "NatSQL": "select tv_channel.Content from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Content from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Package_Option from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Package_Option from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select count ( tv_channel.* )  from tv_channel  where  tv_channel.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select count ( tv_channel.* )  from tv_channel  where  tv_channel.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Language , count ( tv_channel.* )  from tv_channel  group by tv_channel.Language  order by count ( tv_channel.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select tv_channel.Language , count ( tv_channel.* )  from tv_channel  group by tv_channel.Language  order by count ( tv_channel.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select tv_channel.Language , count ( tv_channel.* )  from tv_channel  group by tv_channel.Language "
+  },
+  {
+    "NatSQL": "select tv_channel.Language , count ( tv_channel.* )  from tv_channel  group by tv_channel.Language "
+  },
+  {
+    "NatSQL": "select tv_channel.series_name from tv_channel  where  cartoon.Title = \"黑猫警长\" "
+  },
+  {
+    "NatSQL": "select tv_channel.series_name from tv_channel  where  cartoon.Title = \"黑猫警长\" "
+  },
+  {
+    "NatSQL": "select cartoon.Title from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select cartoon.Title from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select tv_series.Episode from tv_series  order by tv_series.Rating asc"
+  },
+  {
+    "NatSQL": "select tv_series.Episode from tv_series  order by tv_series.Rating asc"
+  },
+  {
+    "NatSQL": "select tv_series.Episode , tv_series.Rating from tv_series  order by tv_series.Rating desc limit 3"
+  },
+  {
+    "NatSQL": "select tv_series.Episode , tv_series.Rating from tv_series  order by tv_series.Rating desc limit 3"
+  },
+  {
+    "NatSQL": "select max ( tv_series.Share )  , min ( tv_series.Share )  from tv_series "
+  },
+  {
+    "NatSQL": "select max ( tv_series.Share )  , min ( tv_series.Share )  from tv_series "
+  },
+  {
+    "NatSQL": "select tv_series.Air_Date from tv_series  where  tv_series.Episode = \"大宅门\" "
+  },
+  {
+    "NatSQL": "select tv_series.Air_Date from tv_series  where  tv_series.Episode = \"大宅门\" "
+  },
+  {
+    "NatSQL": "select tv_series.Weekly_Rank from tv_series  where  tv_series.Episode = \"大宅门\" "
+  },
+  {
+    "NatSQL": "select tv_series.Weekly_Rank from tv_series  where  tv_series.Episode = \"大宅门\" "
+  },
+  {
+    "NatSQL": "select tv_channel.series_name from tv_channel  where  tv_series.Episode = \"大宅门\" "
+  },
+  {
+    "NatSQL": "select tv_channel.series_name from tv_channel  where  tv_series.Episode = \"大宅门\" "
+  },
+  {
+    "NatSQL": "select tv_series.Episode from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select tv_series.Episode from tv_channel  where  tv_channel.series_name = \"潜伏\" "
+  },
+  {
+    "NatSQL": "select count ( cartoon.* )  , cartoon.Directed_by from cartoon  group by cartoon.Directed_by "
+  },
+  {
+    "NatSQL": "select count ( cartoon.* )  , cartoon.Directed_by from cartoon  group by cartoon.Directed_by "
+  },
+  {
+    "NatSQL": "select cartoon.Production_code , cartoon.Channel from cartoon  order by cartoon.Original_air_date desc limit 1"
+  },
+  {
+    "NatSQL": "select cartoon.Production_code , cartoon.Channel from cartoon  order by cartoon.Original_air_date desc limit 1"
+  },
+  {
+    "NatSQL": "select tv_channel.Package_Option , tv_channel.series_name from tv_channel  where  tv_channel.Hight_definition_TV = \"确定\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Package_Option , tv_channel.series_name from tv_channel  where  tv_channel.Hight_definition_TV = \"确定\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Country from tv_channel  where  cartoon.Written_by = \"白英\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Country from tv_channel  where  cartoon.Written_by = \"白英\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Country from tv_channel  where  except_  @.@ is cartoon.*  and  cartoon.Written_by = \"白英\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Country from tv_channel  where  except_  @.@ is cartoon.*  and  cartoon.Written_by = \"白英\" "
+  },
+  {
+    "NatSQL": "select tv_channel.series_name , tv_channel.Country from tv_channel  where  cartoon.Directed_by = \"杨洁\"  and  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select tv_channel.series_name , tv_channel.Country from tv_channel  where  cartoon.Directed_by = \"杨洁\"  and  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Pixel_aspect_ratio_PAR , tv_channel.Country from tv_channel  where  tv_channel.Language != \"英语\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Pixel_aspect_ratio_PAR , tv_channel.Country from tv_channel  where  tv_channel.Language != \"英语\" "
+  },
+  {
+    "NatSQL": "select tv_channel.id from tv_channel  where  count ( tv_channel.* )  > 2  group by tv_channel.Country "
+  },
+  {
+    "NatSQL": "select tv_channel.id from tv_channel  where  count ( tv_channel.* )  > 2  group by tv_channel.Country "
+  },
+  {
+    "NatSQL": "select tv_channel.id from tv_channel  where  except_  @.@ is cartoon.*  and  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select tv_channel.id from tv_channel  where  except_  @.@ is cartoon.*  and  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Package_Option from tv_channel  where  @.@ not in cartoon.*  and  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select tv_channel.Package_Option from tv_channel  where  @.@ not in cartoon.*  and  cartoon.Directed_by = \"黄伟明\" "
+  },
+  {
+    "NatSQL": "select count ( poker_player.* )  from poker_player "
+  },
+  {
+    "NatSQL": "select count ( poker_player.* )  from poker_player "
+  },
+  {
+    "NatSQL": "select poker_player.Earnings from poker_player  order by poker_player.Earnings desc"
+  },
+  {
+    "NatSQL": "select poker_player.Earnings from poker_player  order by poker_player.Earnings desc"
+  },
+  {
+    "NatSQL": "select poker_player.Final_Table_Made , poker_player.Best_Finish from poker_player "
+  },
+  {
+    "NatSQL": "select poker_player.Final_Table_Made , poker_player.Best_Finish from poker_player "
+  },
+  {
+    "NatSQL": "select avg ( poker_player.Earnings )  from poker_player "
+  },
+  {
+    "NatSQL": "select avg ( poker_player.Earnings )  from poker_player "
+  },
+  {
+    "NatSQL": "select poker_player.Money_Rank from poker_player  order by poker_player.Earnings desc limit 1"
+  },
+  {
+    "NatSQL": "select poker_player.Money_Rank from poker_player  order by poker_player.Earnings desc limit 1"
+  },
+  {
+    "NatSQL": "select max ( poker_player.Final_Table_Made )  from poker_player  where  poker_player.Earnings < 200000 "
+  },
+  {
+    "NatSQL": "select max ( poker_player.Final_Table_Made )  from poker_player  where  poker_player.Earnings < 200000 "
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  where  @.@ join poker_player.* "
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  where  @.@ join poker_player.* "
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  where  poker_player.Earnings > 300000 "
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  where  poker_player.Earnings > 300000 "
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  order by poker_player.Final_Table_Made asc"
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  order by poker_player.Final_Table_Made asc"
+  },
+  {
+    "NatSQL": "select people.Birth_Date from poker_player  order by poker_player.Earnings asc limit 1"
+  },
+  {
+    "NatSQL": "select people.Birth_Date from poker_player  order by poker_player.Earnings asc limit 1"
+  },
+  {
+    "NatSQL": "select poker_player.Money_Rank from poker_player  order by people.Height desc limit 1"
+  },
+  {
+    "NatSQL": "select poker_player.Money_Rank from poker_player  order by people.Height desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( poker_player.Earnings )  from poker_player  where  people.Height > 200 "
+  },
+  {
+    "NatSQL": "select avg ( poker_player.Earnings )  from poker_player  where  people.Height > 200 "
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  order by poker_player.Earnings desc"
+  },
+  {
+    "NatSQL": "select people.Name from poker_player  order by poker_player.Earnings desc"
+  },
+  {
+    "NatSQL": "select people.Nationality , count ( people.* )  from people  group by people.Nationality "
+  },
+  {
+    "NatSQL": "select people.Nationality , count ( people.* )  from people  group by people.Nationality "
+  },
+  {
+    "NatSQL": "select people.Nationality from people  group by people.Nationality  order by count ( people.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select people.Nationality from people  group by people.Nationality  order by count ( people.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select people.Nationality from people  where  count ( people.* )  >= 2  group by people.Nationality "
+  },
+  {
+    "NatSQL": "select people.Nationality from people  where  count ( people.* )  >= 2  group by people.Nationality "
+  },
+  {
+    "NatSQL": "select people.Name , people.Birth_Date from people  order by people.Name asc"
+  },
+  {
+    "NatSQL": "select people.Name , people.Birth_Date from people  order by people.Name asc"
+  },
+  {
+    "NatSQL": "select people.Name from people  where  people.Nationality != \"俄罗斯\" "
+  },
+  {
+    "NatSQL": "select people.Name from people  where  people.Nationality != \"俄罗斯\" "
+  },
+  {
+    "NatSQL": "select people.Name from people  where  @.@ not in poker_player.* "
+  },
+  {
+    "NatSQL": "select people.Name from people  where  @.@ not in poker_player.* "
+  },
+  {
+    "NatSQL": "select count (  distinct people.Nationality )  from people "
+  },
+  {
+    "NatSQL": "select count (  distinct people.Nationality )  from people "
+  },
+  {
+    "NatSQL": "select count ( area_code_state.* )  from area_code_state "
+  },
+  {
+    "NatSQL": "select contestants.contestant_number , contestants.contestant_name from contestants  order by contestants.contestant_name desc"
+  },
+  {
+    "NatSQL": "select votes.vote_id , votes.phone_number , votes.state from votes "
+  },
+  {
+    "NatSQL": "select max ( area_code_state.area_code )  , min ( area_code_state.area_code )  from area_code_state "
+  },
+  {
+    "NatSQL": "select max ( votes.created )  from votes  where  votes.state = \"浙江\" "
+  },
+  {
+    "NatSQL": "select contestants.contestant_name from contestants  where  contestants.contestant_name != \"李红\" "
+  },
+  {
+    "NatSQL": "select  distinct votes.state , votes.created from votes "
+  },
+  {
+    "NatSQL": "select contestants.contestant_number , contestants.contestant_name from contestants  where  count ( votes.* )  >= 2  group by contestants.contestant_number "
+  },
+  {
+    "NatSQL": "select contestants.contestant_number , contestants.contestant_name from contestants  group by contestants.contestant_number  order by count ( votes.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select count ( votes.* )  from votes  where  votes.state = \"江苏\"  or  votes.state = \"浙江\" "
+  },
+  {
+    "NatSQL": "select count ( contestants.* )  from contestants  where  @.@ not in votes.* "
+  },
+  {
+    "NatSQL": "select area_code_state.area_code from area_code_state  group by area_code_state.area_code  order by count ( votes.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select votes.created , votes.state , votes.phone_number from contestants  where  contestants.contestant_name = \"王伟\" "
+  },
+  {
+    "NatSQL": "select area_code_state.area_code from contestants  where  contestants.contestant_name = \"王伟\"  and  contestants.contestant_name = \"王芳\" "
+  },
+  {
+    "NatSQL": "select contestants.contestant_name from contestants  where  contestants.contestant_name like \"%勇%\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.IndepYear > 1950 "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.IndepYear > 1950 "
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  country.GovernmentForm = \"共和制\" "
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  country.GovernmentForm = \"共和制\" "
+  },
+  {
+    "NatSQL": "select sum ( country.SurfaceArea )  from country  where  country.Region = \"加勒比\" "
+  },
+  {
+    "NatSQL": "select sum ( country.SurfaceArea )  from country  where  country.Region = \"加勒比\" "
+  },
+  {
+    "NatSQL": "select country.Continent from country  where  country.Name = \"安圭拉\" "
+  },
+  {
+    "NatSQL": "select country.Continent from country  where  country.Name = \"安圭拉\" "
+  },
+  {
+    "NatSQL": "select country.Region from country  where  city.Name = \"温州市\" "
+  },
+  {
+    "NatSQL": "select country.Region from country  where  city.Name = \"温州市\" "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.Name = \"阿鲁巴\"  order by countrylanguage.Percentage desc limit 1"
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.Name = \"阿鲁巴\"  order by countrylanguage.Percentage desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Population , country.LifeExpectancy from country  where  country.Name = \"巴西\" "
+  },
+  {
+    "NatSQL": "select country.Population , country.LifeExpectancy from country  where  country.Name = \"巴西\" "
+  },
+  {
+    "NatSQL": "select country.Population , country.Region from country  where  country.Name = \"安哥拉\" "
+  },
+  {
+    "NatSQL": "select country.Population , country.Region from country  where  country.Name = \"安哥拉\" "
+  },
+  {
+    "NatSQL": "select avg ( country.LifeExpectancy )  from country  where  country.Region = \"非洲\" "
+  },
+  {
+    "NatSQL": "select avg ( country.LifeExpectancy )  from country  where  country.Region = \"非洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"亚洲\"  order by country.LifeExpectancy asc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"亚洲\"  order by country.LifeExpectancy asc limit 1"
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , max ( country.GNP )  from country  where  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , max ( country.GNP )  from country  where  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select avg ( country.LifeExpectancy )  from country  where  country.Continent = \"非洲\"  and  country.GovernmentForm = \"共和制\" "
+  },
+  {
+    "NatSQL": "select avg ( country.LifeExpectancy )  from country  where  country.Continent = \"非洲\"  and  country.GovernmentForm = \"共和制\" "
+  },
+  {
+    "NatSQL": "select sum ( country.SurfaceArea )  from country  where  country.Continent = \"亚洲\"  or  country.Continent = \"欧洲\" "
+  },
+  {
+    "NatSQL": "select sum ( country.SurfaceArea )  from country  where  country.Continent = \"亚洲\"  or  country.Continent = \"欧洲\" "
+  },
+  {
+    "NatSQL": "select sum ( city.Population )  from city  where  city.District = \"西湖\" "
+  },
+  {
+    "NatSQL": "select sum ( city.Population )  from city  where  city.District = \"西湖\" "
+  },
+  {
+    "NatSQL": "select avg ( country.GNP )  , sum ( country.Population )  from country  where  country.GovernmentForm = \"美国属地\" "
+  },
+  {
+    "NatSQL": "select avg ( country.GNP )  , sum ( country.Population )  from country  where  country.GovernmentForm = \"美国属地\" "
+  },
+  {
+    "NatSQL": "select count (  distinct countrylanguage.Language )  from countrylanguage "
+  },
+  {
+    "NatSQL": "select count (  distinct countrylanguage.Language )  from countrylanguage "
+  },
+  {
+    "NatSQL": "select count (  distinct country.GovernmentForm )  from country  where  country.Continent = \"非洲\" "
+  },
+  {
+    "NatSQL": "select count (  distinct country.GovernmentForm )  from country  where  country.Continent = \"非洲\" "
+  },
+  {
+    "NatSQL": "select count ( countrylanguage.Language )  from country  where  country.Name = \"阿鲁巴\" "
+  },
+  {
+    "NatSQL": "select count ( countrylanguage.Language )  from country  where  country.Name = \"阿鲁巴\" "
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  country.Name = \"阿富汗\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  country.Name = \"阿富汗\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select country.Name from countrylanguage  group by country.Name  order by count ( countrylanguage.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name from countrylanguage  group by country.Name  order by count ( countrylanguage.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Continent from countrylanguage  group by country.Continent  order by count ( countrylanguage.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Continent from countrylanguage  group by country.Continent  order by count ( countrylanguage.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.Language = \"荷兰语\" "
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.Language = \"荷兰语\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.Language = \"法语\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.Language = \"法语\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.IsOfficial = \"T\"  and  countrylanguage.Language = \"法语\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.IsOfficial = \"T\"  and  countrylanguage.Language = \"法语\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select count (  distinct country.Continent )  from country  where  countrylanguage.Language = \"汉语\" "
+  },
+  {
+    "NatSQL": "select count (  distinct country.Continent )  from country  where  countrylanguage.Language = \"汉语\" "
+  },
+  {
+    "NatSQL": "select  distinct country.Region from country  where  countrylanguage.Language = \"英语\"  or  countrylanguage.Language = \"荷兰语\" "
+  },
+  {
+    "NatSQL": "select  distinct country.Region from country  where  countrylanguage.Language = \"英语\"  or  countrylanguage.Language = \"荷兰语\" "
+  },
+  {
+    "NatSQL": "select country.name from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.IsOfficial = \"T\"  or  countrylanguage.Language = \"荷兰语\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select country.name from country  where  countrylanguage.Language = \"英语\"  and  countrylanguage.IsOfficial = \"T\"  or  countrylanguage.Language = \"荷兰语\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.Continent = \"亚洲\"  group by countrylanguage.Language  order by count ( country.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.Continent = \"亚洲\"  group by countrylanguage.Language  order by count ( country.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.GovernmentForm = \"共和制\"  and  count ( country.* )  = 1  group by countrylanguage.Language "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.GovernmentForm = \"共和制\"  and  count ( country.* )  = 1  group by countrylanguage.Language "
+  },
+  {
+    "NatSQL": "select city.Name , city.Population from city  where  countrylanguage.Language = \"英语\"  order by city.Population desc limit 1"
+  },
+  {
+    "NatSQL": "select city.Name , city.Population from city  where  countrylanguage.Language = \"英语\"  order by city.Population desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name , country.Population , country.LifeExpectancy from country  where  country.Continent = \"亚洲\"  order by country.SurfaceArea desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name , country.Population , country.LifeExpectancy from country  where  country.Continent = \"亚洲\"  order by country.SurfaceArea desc limit 1"
+  },
+  {
+    "NatSQL": "select avg ( country.LifeExpectancy )  from country  where  @.@ not in country.Name  and  countrylanguage.Language = \"英语\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select avg ( country.LifeExpectancy )  from country  where  @.@ not in country.Name  and  countrylanguage.Language = \"英语\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  from country  where  @.@ not in country.Name  and  countrylanguage.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  from country  where  @.@ not in country.Name  and  countrylanguage.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.HeadOfState = \"Beatrix\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from country  where  country.HeadOfState = \"Beatrix\"  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select count (  distinct countrylanguage.Language )  from country  where  country.IndepYear < 1930  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select count (  distinct countrylanguage.Language )  from country  where  country.IndepYear < 1930  and  countrylanguage.IsOfficial = \"T\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  @.@ > min ( country.SurfaceArea )   and  country.Continent = \"欧洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  @.@ > min ( country.SurfaceArea )   and  country.Continent = \"欧洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"非洲\"  and  @.@ < max ( country.Population )   and  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"非洲\"  and  @.@ < min ( country.Population )   and  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"亚洲\"  and  @.@ > max ( country.Population )   and  country.Continent = \"非洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"亚洲\"  and  @.@ > min ( country.Population )   and  country.Continent = \"非洲\" "
+  },
+  {
+    "NatSQL": "select countrylanguage.CountryCode from countrylanguage  where  except_  @.@ is countrylanguage.*  and  countrylanguage.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select countrylanguage.CountryCode from countrylanguage  where  except_  @.@ is countrylanguage.*  and  countrylanguage.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select  distinct countrylanguage.CountryCode from countrylanguage  where  countrylanguage.Language != \"英语\" "
+  },
+  {
+    "NatSQL": "select  distinct countrylanguage.CountryCode from countrylanguage  where  countrylanguage.Language != \"英语\" "
+  },
+  {
+    "NatSQL": "select country.Code from country  where  countrylanguage.Language != \"英语\"  and  country.GovernmentForm != \"共和制\" "
+  },
+  {
+    "NatSQL": "select country.Code from country  where  countrylanguage.Language != \"英语\"  and  country.GovernmentForm != \"共和制\" "
+  },
+  {
+    "NatSQL": "select  distinct city.Name from city  where  country.Continent = \"欧洲\"  and  @.@ not in country.Name  and  countrylanguage.IsOfficial = \"T\"  and  countrylanguage.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select  distinct city.Name from city  where  country.Continent = \"欧洲\"  and  @.@ not in country.Name  and  countrylanguage.IsOfficial = \"T\"  and  countrylanguage.Language = \"英语\" "
+  },
+  {
+    "NatSQL": "select  distinct city.Name from city  where  countrylanguage.IsOfficial = \"T\"  and  countrylanguage.Language = \"中文\"  and  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select  distinct city.Name from city  where  countrylanguage.IsOfficial = \"T\"  and  countrylanguage.Language = \"中文\"  and  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select country.Name , country.SurfaceArea , country.IndepYear from country  order by country.Population asc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name , country.SurfaceArea , country.IndepYear from country  order by country.Population asc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name , country.Population , country.HeadOfState from country  order by country.SurfaceArea desc limit 1"
+  },
+  {
+    "NatSQL": "select country.Name , country.Population , country.HeadOfState from country  order by country.SurfaceArea desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( countrylanguage.Language )  , country.Name from country  where  count ( country.* )  > 2  group by country.Name "
+  },
+  {
+    "NatSQL": "select count ( countrylanguage.Language )  , country.Name from country  where  count ( country.* )  > 2  group by country.Name "
+  },
+  {
+    "NatSQL": "select count ( city.* )  , city.District from city  where  @.@ > avg ( city.Population )   group by city.District "
+  },
+  {
+    "NatSQL": "select count ( city.* )  , city.District from city  where  @.@ > avg ( city.Population )   group by city.District "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , country.GovernmentForm from country  where  avg ( country.LifeExpectancy )  > 72  group by country.GovernmentForm "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , country.GovernmentForm from country  where  avg ( country.LifeExpectancy )  > 72  group by country.GovernmentForm "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , avg ( country.LifeExpectancy )  , country.Continent from country  where  avg ( country.LifeExpectancy )  < 72  group by country.Continent "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , avg ( country.LifeExpectancy )  , country.Continent from country  where  avg ( country.LifeExpectancy )  < 72  group by country.Continent "
+  },
+  {
+    "NatSQL": "select country.Name , country.SurfaceArea from country  order by country.SurfaceArea desc limit 5"
+  },
+  {
+    "NatSQL": "select country.Name , country.SurfaceArea from country  order by country.SurfaceArea desc limit 5"
+  },
+  {
+    "NatSQL": "select country.Name from country  order by country.Population desc limit 3"
+  },
+  {
+    "NatSQL": "select country.Name from country  order by country.Population desc limit 3"
+  },
+  {
+    "NatSQL": "select country.Name from country  order by country.Population asc limit 3"
+  },
+  {
+    "NatSQL": "select country.Name from country  order by country.Population asc limit 3"
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select count ( country.* )  from country  where  country.Continent = \"亚洲\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"欧洲\"  and  country.Population = \"80000\" "
+  },
+  {
+    "NatSQL": "select country.Name from country  where  country.Continent = \"欧洲\"  and  country.Population = \"80000\" "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , avg ( country.SurfaceArea )  from country  where  country.Continent = \"北美\"  and  country.SurfaceArea > 3000 "
+  },
+  {
+    "NatSQL": "select sum ( country.Population )  , avg ( country.SurfaceArea )  from country  where  country.Continent = \"北美\"  and  country.SurfaceArea > 3000 "
+  },
+  {
+    "NatSQL": "select city.Name from city  where  city.Population between 160000 and 900000 "
+  },
+  {
+    "NatSQL": "select city.Name from city  where  city.Population between 160000 and 900000 "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from countrylanguage  group by countrylanguage.Language  order by count ( countrylanguage.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select countrylanguage.Language from countrylanguage  group by countrylanguage.Language  order by count ( countrylanguage.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select countrylanguage.Language , countrylanguage.CountryCode , max ( countrylanguage.Percentage )  from countrylanguage  group by countrylanguage.CountryCode "
+  },
+  {
+    "NatSQL": "select countrylanguage.Language , countrylanguage.CountryCode , max ( countrylanguage.Percentage )  from countrylanguage  group by countrylanguage.CountryCode "
+  },
+  {
+    "NatSQL": "select count ( countrylanguage.* )  , max ( countrylanguage.Percentage )  from countrylanguage  where  countrylanguage.Language = \"西班牙语\"  group by countrylanguage.CountryCode "
+  },
+  {
+    "NatSQL": "select count ( countrylanguage.* )  , max ( countrylanguage.Percentage )  from countrylanguage  where  countrylanguage.Language = \"西班牙语\"  group by countrylanguage.CountryCode "
+  },
+  {
+    "NatSQL": "select countrylanguage.CountryCode , max ( countrylanguage.Percentage )  from countrylanguage  where  countrylanguage.Language = \"西班牙语\"  group by countrylanguage.CountryCode "
+  },
+  {
+    "NatSQL": "select countrylanguage.CountryCode , max ( countrylanguage.Percentage )  from countrylanguage  where  countrylanguage.Language = \"西班牙语\"  group by countrylanguage.CountryCode "
+  },
+  {
+    "NatSQL": "select count ( conductor.* )  from conductor "
+  },
+  {
+    "NatSQL": "select count ( conductor.* )  from conductor "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  order by conductor.Age asc"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  order by conductor.Age asc"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  where  conductor.Nationality != \"美国\" "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  where  conductor.Nationality != \"美国\" "
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company from orchestra  order by orchestra.Year_of_Founded desc"
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company from orchestra  order by orchestra.Year_of_Founded desc"
+  },
+  {
+    "NatSQL": "select avg ( show.Attendance )  from show "
+  },
+  {
+    "NatSQL": "select avg ( show.Attendance )  from show "
+  },
+  {
+    "NatSQL": "select max ( performance.Share )  , min ( performance.Share )  from performance  where  performance.Type != \"决赛直播\" "
+  },
+  {
+    "NatSQL": "select max ( performance.Share )  , min ( performance.Share )  from performance  where  performance.Type != \"决赛直播\" "
+  },
+  {
+    "NatSQL": "select count (  distinct conductor.Nationality )  from conductor "
+  },
+  {
+    "NatSQL": "select count (  distinct conductor.Nationality )  from conductor "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  order by conductor.Year_of_Work desc"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  order by conductor.Year_of_Work desc"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  order by conductor.Year_of_Work desc limit 1"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  order by conductor.Year_of_Work desc limit 1"
+  },
+  {
+    "NatSQL": "select conductor.Name , orchestra.Orchestra from conductor "
+  },
+  {
+    "NatSQL": "select conductor.Name , orchestra.Orchestra from conductor "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  where  count ( orchestra.* )  > 1  group by orchestra.Conductor_ID "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  where  count ( orchestra.* )  > 1  group by orchestra.Conductor_ID "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  group by orchestra.Conductor_ID  order by count ( orchestra.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  group by orchestra.Conductor_ID  order by count ( orchestra.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  where  orchestra.Year_of_Founded > 2008 "
+  },
+  {
+    "NatSQL": "select conductor.Name from conductor  where  orchestra.Year_of_Founded > 2008 "
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company , count ( orchestra.* )  from orchestra  group by orchestra.Record_Company "
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company , count ( orchestra.* )  from orchestra  group by orchestra.Record_Company "
+  },
+  {
+    "NatSQL": "select orchestra.Major_Record_Format from orchestra  group by orchestra.Major_Record_Format  order by count ( orchestra.* )  asc"
+  },
+  {
+    "NatSQL": "select orchestra.Major_Record_Format from orchestra  group by orchestra.Major_Record_Format  order by count ( orchestra.* )  asc"
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company from orchestra  group by orchestra.Record_Company  order by count ( orchestra.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company from orchestra  group by orchestra.Record_Company  order by count ( orchestra.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select orchestra.Orchestra from orchestra  where  @.@ not in performance.* "
+  },
+  {
+    "NatSQL": "select orchestra.Orchestra from orchestra  where  @.@ not in performance.* "
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company from orchestra  where  orchestra.Year_of_Founded < 2003  and  orchestra.Year_of_Founded > 2003 "
+  },
+  {
+    "NatSQL": "select orchestra.Record_Company from orchestra  where  orchestra.Year_of_Founded < 2003  and  orchestra.Year_of_Founded > 2003 "
+  },
+  {
+    "NatSQL": "select count ( orchestra.* )  from orchestra  where  orchestra.Major_Record_Format = \"CD\"  or  orchestra.Major_Record_Format = \"DVD\" "
+  },
+  {
+    "NatSQL": "select count ( orchestra.* )  from orchestra  where  orchestra.Major_Record_Format = \"CD\"  or  orchestra.Major_Record_Format = \"DVD\" "
+  },
+  {
+    "NatSQL": "select orchestra.Year_of_Founded from orchestra  where  count ( performance.* )  > 1  group by performance.Orchestra_ID "
+  },
+  {
+    "NatSQL": "select orchestra.Year_of_Founded from orchestra  where  count ( performance.* )  > 1  group by performance.Orchestra_ID "
+  },
+  {
+    "NatSQL": "select count ( highschooler.* )  from highschooler "
+  },
+  {
+    "NatSQL": "select count ( highschooler.* )  from highschooler "
+  },
+  {
+    "NatSQL": "select highschooler.name , highschooler.grade from highschooler "
+  },
+  {
+    "NatSQL": "select highschooler.name , highschooler.grade from highschooler "
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler "
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler "
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  highschooler.grade = 10 "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  highschooler.grade = 10 "
+  },
+  {
+    "NatSQL": "select highschooler.ID from highschooler  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select highschooler.ID from highschooler  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select count ( highschooler.* )  from highschooler  where  highschooler.grade = 9  or  highschooler.grade = 10 "
+  },
+  {
+    "NatSQL": "select count ( highschooler.* )  from highschooler  where  highschooler.grade = 9  or  highschooler.grade = 10 "
+  },
+  {
+    "NatSQL": "select highschooler.grade , count ( highschooler.* )  from highschooler  group by highschooler.grade "
+  },
+  {
+    "NatSQL": "select highschooler.grade , count ( highschooler.* )  from highschooler  group by highschooler.grade "
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler  group by highschooler.grade  order by count ( highschooler.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler  group by highschooler.grade  order by count ( highschooler.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler  where  count ( highschooler.* )  >= 4  group by highschooler.grade "
+  },
+  {
+    "NatSQL": "select highschooler.grade from highschooler  where  count ( highschooler.* )  >= 4  group by highschooler.grade "
+  },
+  {
+    "NatSQL": "select friend.student_id , count ( friend.* )  from friend  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select friend.student_id , count ( friend.* )  from friend  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name , count ( friend.* )  from friend  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name , count ( friend.* )  from highschooler  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  group by friend.student_id  order by count ( friend.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  group by friend.student_id  order by count ( friend.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  count ( friend.* )  >= 3  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  count ( friend.* )  >= 3  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from friend  where  @.@ = friend.student_id  and  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select highschooler.name from friend  where  @.@ = friend.student_id  and  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select count ( friend.* )  from friend  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select count ( friend.* )  from friend  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select highschooler.ID from highschooler  where  except_  @.@ is friend.* "
+  },
+  {
+    "NatSQL": "select highschooler.ID from highschooler  where  except_  @.@ is friend.* "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  except_  @.@ is friend.* "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  except_  @.@ is friend.* "
+  },
+  {
+    "NatSQL": "select highschooler.ID from highschooler  where  intersect_  @.@ is likes.* "
+  },
+  {
+    "NatSQL": "select highschooler.ID from highschooler  where  intersect_  @.@ is likes.* "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  @.@ join friend.*  and  @.@ = likes.liked_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  @.@ join friend.*  and  @.@ = likes.liked_id "
+  },
+  {
+    "NatSQL": "select likes.student_id , count ( likes.* )  from likes  group by likes.student_id "
+  },
+  {
+    "NatSQL": "select likes.student_id , count ( likes.* )  from likes  group by likes.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name , count ( likes.* )  from likes  group by likes.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name , count ( likes.* )  from likes  group by likes.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from likes  group by likes.student_id  order by count ( likes.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select highschooler.name from likes  group by likes.student_id  order by count ( likes.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  count ( likes.* )  >= 2  group by likes.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  count ( likes.* )  >= 2  group by likes.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  highschooler.grade > 5  and  count ( friend.* )  >= 2  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select highschooler.name from highschooler  where  highschooler.grade > 5  and  count ( friend.* )  >= 2  group by friend.student_id "
+  },
+  {
+    "NatSQL": "select count ( likes.* )  from likes  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select count ( likes.* )  from likes  where  highschooler.name = \"小军\" "
+  },
+  {
+    "NatSQL": "select avg ( highschooler.grade )  from highschooler  where  @.@ in friend.student_id  and  @.@ join highschooler.* "
+  },
+  {
+    "NatSQL": "select avg ( highschooler.grade )  from highschooler  where  @.@ in friend.student_id  and  @.@ join highschooler.* "
+  },
+  {
+    "NatSQL": "select min ( highschooler.grade )  from highschooler  where  @.@ not in friend.student_id  and  @.@ join highschooler.* "
+  },
+  {
+    "NatSQL": "select min ( highschooler.grade )  from highschooler  where  @.@ not in friend.student_id  and  @.@ join highschooler.* "
+  },
+  {
+    "NatSQL": "select owners.state from owners  where  intersect_  @.@ is professionals.* "
+  },
+  {
+    "NatSQL": "select owners.state from owners  where  intersect_  @.@ is professionals.* "
+  },
+  {
+    "NatSQL": "select avg ( dogs.age )  from dogs  where  @.@ in treatments.* "
+  },
+  {
+    "NatSQL": "select avg ( dogs.age )  from dogs  where  @.@ in treatments.* "
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.last_name , professionals.cell_number from professionals  where  professionals.state = \"Indiana\"  or  count ( treatments.* )  > 2 "
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.last_name , professionals.cell_number from professionals  where  professionals.state = \"Indiana\"  or  count ( treatments.* )  > 2 "
+  },
+  {
+    "NatSQL": "select dogs.name from dogs  where  @.@ not in treatments.*  and  sum ( treatments.cost_of_treatment )  > 1000 "
+  },
+  {
+    "NatSQL": "select dogs.name from dogs  where  @.@ not in treatments.*  and  sum ( treatments.cost_of_treatment )  > 1000 "
+  },
+  {
+    "NatSQL": "select professionals.first_name from professionals  where  except_  @.@ is dogs.* "
+  },
+  {
+    "NatSQL": "select professionals.first_name from professionals  where  except_  @.@ is dogs.* "
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.role_code , professionals.email_address from professionals  where  except_  @.@ is treatments.* "
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.role_code , professionals.email_address from professionals  where  except_  @.@ is treatments.* "
+  },
+  {
+    "NatSQL": "select owners.owner_id , owners.first_name , owners.last_name from dogs  group by dogs.owner_id  order by count ( dogs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select owners.owner_id , owners.first_name , owners.last_name from dogs  group by dogs.owner_id  order by count ( dogs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.role_code , professionals.first_name from professionals  where  count ( treatments.* )  >= 2  group by professionals.professional_id "
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.role_code , professionals.first_name from professionals  where  count ( treatments.* )  >= 2  group by professionals.professional_id "
+  },
+  {
+    "NatSQL": "select breeds.breed_name from breeds  group by breeds.breed_name  order by count ( dogs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select breeds.breed_name from breeds  group by breeds.breed_name  order by count ( dogs.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select owners.owner_id , owners.last_name from treatments  group by owners.owner_id  order by count ( treatments.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select owners.owner_id , owners.last_name from treatments  group by owners.owner_id  order by count ( treatments.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select treatment_types.treatment_type_description from treatment_types  group by treatment_types.treatment_type_code  order by sum ( treatments.cost_of_treatment )  asc limit 1"
+  },
+  {
+    "NatSQL": "select treatment_types.treatment_type_description from treatment_types  group by treatment_types.treatment_type_code  order by sum ( treatments.cost_of_treatment )  asc limit 1"
+  },
+  {
+    "NatSQL": "select owners.owner_id , owners.zip_code from owners  group by owners.owner_id  order by sum ( treatments.cost_of_treatment )  desc limit 1"
+  },
+  {
+    "NatSQL": "select owners.owner_id , owners.zip_code from owners  group by owners.owner_id  order by sum ( treatments.cost_of_treatment )  desc limit 1"
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.cell_number from treatments  where  count ( treatments.* )  >= 2  group by professionals.professional_id "
+  },
+  {
+    "NatSQL": "select professionals.professional_id , professionals.cell_number from treatments  where  count ( treatments.* )  >= 2  group by professionals.professional_id "
+  },
+  {
+    "NatSQL": "select  distinct professionals.first_name , professionals.last_name from professionals  where  @.@ < avg ( treatments.cost_of_treatment )  "
+  },
+  {
+    "NatSQL": "select  distinct professionals.first_name , professionals.last_name from professionals  where  @.@ < avg ( treatments.cost_of_treatment )  "
+  },
+  {
+    "NatSQL": "select treatments.date_of_treatment , professionals.first_name from treatments "
+  },
+  {
+    "NatSQL": "select treatments.date_of_treatment , professionals.first_name from treatments "
+  },
+  {
+    "NatSQL": "select treatments.cost_of_treatment , treatment_types.treatment_type_description from treatments "
+  },
+  {
+    "NatSQL": "select treatments.cost_of_treatment , treatment_types.treatment_type_description from treatments "
+  },
+  {
+    "NatSQL": "select owners.first_name , owners.last_name , dogs.size_code from owners "
+  },
+  {
+    "NatSQL": "select owners.first_name , owners.last_name , dogs.size_code from owners "
+  },
+  {
+    "NatSQL": "select owners.first_name , dogs.name from owners "
+  },
+  {
+    "NatSQL": "select owners.first_name , dogs.name from owners "
+  },
+  {
+    "NatSQL": "select dogs.name , treatments.date_of_treatment from dogs  where  @.@ = dogs.breed_code  order by count ( dogs.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select dogs.name , treatments.date_of_treatment from dogs  where  @.@ = dogs.breed_code  order by count ( dogs.* )  asc limit 1"
+  },
+  {
+    "NatSQL": "select owners.first_name , dogs.name from owners  where  owners.state = \"山西\" "
+  },
+  {
+    "NatSQL": "select owners.first_name , dogs.name from owners  where  owners.state = \"山西\" "
+  },
+  {
+    "NatSQL": "select  distinct dogs.date_arrived , dogs.date_departed from treatments  where  @.@ join treatments.* "
+  },
+  {
+    "NatSQL": "select  distinct dogs.date_arrived , dogs.date_departed from treatments  where  @.@ join treatments.* "
+  },
+  {
+    "NatSQL": "select owners.last_name from owners  where  @.@ = max ( dogs.age )  "
+  },
+  {
+    "NatSQL": "select owners.last_name from owners  where  @.@ = max ( dogs.age )  "
+  },
+  {
+    "NatSQL": "select professionals.email_address from professionals  where  professionals.state = \"台湾\"  or  professionals.state = \"福建\" "
+  },
+  {
+    "NatSQL": "select professionals.email_address from professionals  where  professionals.state = \"台湾\"  or  professionals.state = \"福建\" "
+  },
+  {
+    "NatSQL": "select dogs.date_arrived , dogs.date_departed from dogs "
+  },
+  {
+    "NatSQL": "select dogs.date_arrived , dogs.date_departed from dogs "
+  },
+  {
+    "NatSQL": "select count (  distinct treatments.dog_id )  from treatments "
+  },
+  {
+    "NatSQL": "select count (  distinct treatments.dog_id )  from treatments "
+  },
+  {
+    "NatSQL": "select count (  distinct treatments.professional_id )  from treatments "
+  },
+  {
+    "NatSQL": "select count (  distinct treatments.professional_id )  from treatments "
+  },
+  {
+    "NatSQL": "select professionals.role_code , professionals.street , professionals.city , professionals.state from professionals  where  professionals.city like \"%西%\" "
+  },
+  {
+    "NatSQL": "select professionals.role_code , professionals.street , professionals.city , professionals.state from professionals  where  professionals.city like \"%西%\" "
+  },
+  {
+    "NatSQL": "select owners.first_name , owners.last_name , owners.email_address from owners  where  owners.state like \"%北%\" "
+  },
+  {
+    "NatSQL": "select owners.first_name , owners.last_name , owners.email_address from owners  where  owners.state like \"%北%\" "
+  },
+  {
+    "NatSQL": "select count ( dogs.* )  from dogs  where  @.@ < avg ( dogs.age )  "
+  },
+  {
+    "NatSQL": "select count ( dogs.* )  from dogs  where  @.@ < avg ( dogs.age )  "
+  },
+  {
+    "NatSQL": "select treatments.cost_of_treatment from treatments  order by treatments.date_of_treatment desc limit 1"
+  },
+  {
+    "NatSQL": "select treatments.cost_of_treatment from treatments  order by treatments.date_of_treatment desc limit 1"
+  },
+  {
+    "NatSQL": "select count ( dogs.* )  from dogs  where  @.@ not in treatments.* "
+  },
+  {
+    "NatSQL": "select count ( dogs.* )  from dogs  where  @.@ not in treatments.* "
+  },
+  {
+    "NatSQL": "select count ( owners.* )  from owners  where  @.@ not in dogs.* "
+  },
+  {
+    "NatSQL": "select count ( owners.* )  from owners  where  @.@ not in dogs.* "
+  },
+  {
+    "NatSQL": "select count ( professionals.* )  from professionals  where  @.@ not in treatments.* "
+  },
+  {
+    "NatSQL": "select count ( professionals.* )  from professionals  where  @.@ not in treatments.* "
+  },
+  {
+    "NatSQL": "select dogs.name , dogs.age , dogs.weight from dogs  where  dogs.abandoned_yn = 1 "
+  },
+  {
+    "NatSQL": "select dogs.name , dogs.age , dogs.weight from dogs  where  dogs.abandoned_yn = 1 "
+  },
+  {
+    "NatSQL": "select avg ( dogs.age )  from dogs "
+  },
+  {
+    "NatSQL": "select avg ( dogs.age )  from dogs "
+  },
+  {
+    "NatSQL": "select max ( dogs.age )  from dogs "
+  },
+  {
+    "NatSQL": "select max ( dogs.age )  from dogs "
+  },
+  {
+    "NatSQL": "select charges.charge_type , charges.charge_amount from charges "
+  },
+  {
+    "NatSQL": "select charges.charge_type , charges.charge_amount from charges "
+  },
+  {
+    "NatSQL": "select max ( charges.charge_amount )  from charges "
+  },
+  {
+    "NatSQL": "select max ( charges.charge_amount )  from charges "
+  },
+  {
+    "NatSQL": "select professionals.email_address , professionals.cell_number , professionals.home_phone from professionals "
+  },
+  {
+    "NatSQL": "select professionals.email_address , professionals.cell_number , professionals.home_phone from professionals "
+  },
+  {
+    "NatSQL": "select  distinct dogs.breed_code , dogs.size_code from dogs "
+  },
+  {
+    "NatSQL": "select  distinct dogs.breed_code , dogs.size_code from dogs "
+  },
+  {
+    "NatSQL": "select  distinct professionals.first_name , treatment_types.treatment_type_description from professionals "
+  },
+  {
+    "NatSQL": "select  distinct professionals.first_name , treatment_types.treatment_type_description from professionals "
+  },
+  {
+    "NatSQL": "select count ( singer.* )  from singer "
+  },
+  {
+    "NatSQL": "select count ( singer.* )  from singer "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  order by singer.Net_Worth_Millions asc"
+  },
+  {
+    "NatSQL": "select singer.Name from singer  order by singer.Net_Worth_Millions asc"
+  },
+  {
+    "NatSQL": "select singer.Birth_Year , singer.Citizenship from singer "
+  },
+  {
+    "NatSQL": "select singer.Birth_Year , singer.Citizenship from singer "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  singer.Citizenship != \"巴黎\" "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  singer.Citizenship != \"法国\" "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  singer.Birth_Year = 1948  or  singer.Birth_Year = 1949 "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  singer.Birth_Year = 1948  or  singer.Birth_Year = 1949 "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  order by singer.Net_Worth_Millions desc limit 1"
+  },
+  {
+    "NatSQL": "select singer.Name from singer  order by singer.Net_Worth_Millions desc limit 1"
+  },
+  {
+    "NatSQL": "select singer.Citizenship , count ( singer.* )  from singer  group by singer.Citizenship "
+  },
+  {
+    "NatSQL": "select singer.Citizenship , count ( singer.* )  from singer  group by singer.Citizenship "
+  },
+  {
+    "NatSQL": "select singer.Citizenship from singer  group by singer.Citizenship  order by count ( singer.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select singer.Citizenship from singer  group by singer.Citizenship  order by count ( singer.* )  desc limit 1"
+  },
+  {
+    "NatSQL": "select singer.Citizenship , max ( singer.Net_Worth_Millions )  from singer  group by singer.Citizenship "
+  },
+  {
+    "NatSQL": "select singer.Citizenship , max ( singer.Net_Worth_Millions )  from singer  group by singer.Citizenship "
+  },
+  {
+    "NatSQL": "select song.Title , singer.Name from singer "
+  },
+  {
+    "NatSQL": "select song.Title , singer.Name from singer "
+  },
+  {
+    "NatSQL": "select  distinct singer.Name from singer  where  song.Sales > 300000 "
+  },
+  {
+    "NatSQL": "select  distinct singer.Name from singer  where  song.Sales > 300000 "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  count ( song.* )  > 1  group by singer.Name "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  count ( song.* )  > 1  group by singer.Name "
+  },
+  {
+    "NatSQL": "select singer.Name , sum ( song.Sales )  from singer  group by singer.Name "
+  },
+  {
+    "NatSQL": "select singer.Name , sum ( song.Sales )  from singer  group by singer.Name "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  @.@ not in song.* "
+  },
+  {
+    "NatSQL": "select singer.Name from singer  where  @.@ not in song.* "
+  },
+  {
+    "NatSQL": "select singer.Citizenship from singer  where  singer.Birth_Year < 1945  and  singer.Birth_Year > 1955 "
+  },
+  {
+    "NatSQL": "select singer.Citizenship from singer  where  singer.Birth_Year < 1945  and  singer.Birth_Year > 1955 "
+  },
+  {
+    "NatSQL": "select count ( other_available_features.* )  from other_available_features "
+  },
+  {
+    "NatSQL": "select ref_feature_types.feature_type_name from other_available_features  where  other_available_features.feature_name = \"春秋航空公司\" "
+  },
+  {
+    "NatSQL": "select ref_property_types.property_type_description from ref_property_types  where  @.@ join properties.*  group by properties.property_type_code "
+  },
+  {
+    "NatSQL": "select properties.property_name from properties  where  properties.property_type_code = \"房子\"  or  properties.property_type_code = \"公寓\"  and  properties.room_count > 1 "
+  }
+]

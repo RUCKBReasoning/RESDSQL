@@ -10,7 +10,7 @@ from copy import deepcopy
 from tokenizers import AddedToken
 from utils.classifier_metric.evaluator import cls_metric, auc_metric
 from torch.utils.data import DataLoader
-from transformers import RobertaTokenizerFast
+from transformers import RobertaTokenizerFast, XLMRobertaTokenizerFast
 from utils.classifier_model import MyClassifier
 from utils.classifier_loss import ClassifierLoss
 from transformers.trainer_utils import set_seed
@@ -192,7 +192,9 @@ def _train(opt):
 
     os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
 
-    tokenizer = RobertaTokenizerFast.from_pretrained(
+    tokenizer_class = XLMRobertaTokenizerFast if "xlm" in opt.model_name_or_path else RobertaTokenizerFast
+
+    tokenizer = tokenizer_class.from_pretrained(
         opt.model_name_or_path,
         add_prefix_space = True
     )
@@ -373,8 +375,10 @@ def _test(opt):
     set_seed(opt.seed)
     os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
 
+    tokenizer_class = XLMRobertaTokenizerFast if "xlm" in opt.model_name_or_path else RobertaTokenizerFast
+    
     # load tokenizer
-    tokenizer = RobertaTokenizerFast.from_pretrained(
+    tokenizer = tokenizer_class.from_pretrained(
         opt.save_path,
         add_prefix_space = True
     )
@@ -507,7 +511,7 @@ if __name__ == "__main__":
                 truncated_dataset.append(truncated_data)
             
             with open("./data/pre-processing/truncated_dataset.json", "w") as f:
-                f.write(json.dumps(truncated_dataset, indent = 2))
+                f.write(json.dumps(truncated_dataset, indent = 2, ensure_ascii = False))
             
             opt.dev_filepath = "./data/pre-processing/truncated_dataset.json"
             total_table_pred_probs, total_column_pred_probs = _test(opt)
@@ -557,4 +561,4 @@ if __name__ == "__main__":
             os.remove("./data/pre-processing/truncated_dataset.json")
 
         with open(opt.output_filepath, "w") as f:
-            f.write(json.dumps(dataset, indent = 2))
+            f.write(json.dumps(dataset, indent = 2, ensure_ascii = False))

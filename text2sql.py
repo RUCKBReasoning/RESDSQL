@@ -10,7 +10,7 @@ from tokenizers import AddedToken
 
 from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import DataLoader
-from transformers import T5TokenizerFast, T5ForConditionalGeneration
+from transformers import T5TokenizerFast, T5ForConditionalGeneration, MT5ForConditionalGeneration
 from transformers.optimization import Adafactor
 from transformers.trainer_utils import set_seed
 from utils.spider_metric.evaluator import EvaluateTool
@@ -87,7 +87,7 @@ def _train(opt):
         opt.model_name_or_path,
         add_prefix_space = True
     )
-    
+
     if isinstance(text2sql_tokenizer, T5TokenizerFast):
         text2sql_tokenizer.add_tokens([AddedToken(" <="), AddedToken(" <")])
     
@@ -104,9 +104,11 @@ def _train(opt):
         drop_last = True
     )
 
+    model_class = MT5ForConditionalGeneration if "mt5" in opt.model_name_or_path else T5ForConditionalGeneration
+
     print("initializing text2sql model.")
     # initialize model
-    model = T5ForConditionalGeneration.from_pretrained(opt.model_name_or_path)
+    model = model_class.from_pretrained(opt.model_name_or_path)
     model.resize_token_embeddings(len(text2sql_tokenizer))
     if torch.cuda.is_available():
         model = model.cuda()
@@ -259,8 +261,10 @@ def _test(opt):
         drop_last = False
     )
 
+    model_class = MT5ForConditionalGeneration if "mt5" in opt.save_path else T5ForConditionalGeneration
+
     # initialize model
-    model = T5ForConditionalGeneration.from_pretrained(opt.save_path)
+    model = model_class.from_pretrained(opt.save_path)
     if torch.cuda.is_available():
         model = model.cuda()
 

@@ -33,4 +33,4 @@ for data in dataset:
     })
 
 with open(output_dataset_path, "w") as f:
-    f.write(json.dumps(output_dataset, indent = 2))
+    f.write(json.dumps(output_dataset, indent = 2, ensure_ascii = False))

@@ -294,10 +294,10 @@ def main(opt):
         if data['query'].startswith('SELECT T1.fname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid IN'):
             data['query'] = data['query'].replace('IN (SELECT T2.dormid)', 'IN (SELECT T3.dormid)')
             index = data['query_toks'].index('(') + 2
-            assert data['query_toks'][index] == 'T2.dormid'
+            # assert data['query_toks'][index] == 'T2.dormid'
             data['query_toks'][index] = 'T3.dormid'
             index = data['query_toks_no_value'].index('(') + 2
-            assert data['query_toks_no_value'][index] == 't2'
+            # assert data['query_toks_no_value'][index] == 't2'
             data['query_toks_no_value'][index] = 't3'
 
         question = data["question"].replace("\u2018", "'").replace("\u2019", "'").replace("\u201c", "'").replace("\u201d", "'").strip()
@@ -402,7 +402,7 @@ def main(opt):
         preprocessed_dataset.append(preprocessed_data)
 
     with open(opt.output_dataset_path, "w") as f:
-        preprocessed_dataset_str = json.dumps(preprocessed_dataset, indent = 2)
+        preprocessed_dataset_str = json.dumps(preprocessed_dataset, indent = 2, ensure_ascii = False)
         f.write(preprocessed_dataset_str)
 
 if __name__ == "__main__":

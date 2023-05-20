@@ -78,7 +78,7 @@ if __name__ == "__main__":
             eval_result["EXEC"] = exec
 
             with open(opt.eval_results_path+"/{}.txt".format(ckpt_name), "w") as f:
-                f.write(json.dumps(eval_result, indent=2))
+                f.write(json.dumps(eval_result, indent = 2, ensure_ascii = False))
             
             eval_results.append(eval_result)
     

@@ -182,7 +182,7 @@ def generate_train_ranked_dataset(opt):
         )
     
     with open(opt.output_dataset_path, "w") as f:
-        f.write(json.dumps(output_dataset, indent = 2))
+        f.write(json.dumps(output_dataset, indent = 2, ensure_ascii = False))
 
 def generate_eval_ranked_dataset(opt):
     with open(opt.input_dataset_path) as f:
@@ -259,7 +259,7 @@ def generate_eval_ranked_dataset(opt):
         )
     
     with open(opt.output_dataset_path, "w") as f:
-        f.write(json.dumps(output_dataset, indent = 2))
+        f.write(json.dumps(output_dataset, indent = 2, ensure_ascii = False))
     
     if opt.mode == "eval":
         print("Table top-{} coverage: {}".format(opt.topk_table_num, sum(table_coverage_state_list)/len(table_coverage_state_list)))
