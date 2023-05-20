@@ -7,7 +7,7 @@ python preprocessing.py \
     --input_dataset_path "./data/CSpider/train_cspider.json" \
     --natsql_dataset_path "./NatSQL/NatSQLv1_6/train_cspider-natsql.json" \
     --output_dataset_path "./data/preprocessed_data/preprocessed_train_cspider_natsql.json" \
-    --db_path "./data/CSpider/database" \
+    --db_path "./database" \
     --target_type "natsql"
 
 # preprocess dev dataset
@@ -17,7 +17,7 @@ python preprocessing.py \
     --input_dataset_path "./data/CSpider/dev.json" \
     --natsql_dataset_path "./NatSQL/NatSQLv1_6/dev_cspider-natsql.json" \
     --output_dataset_path "./data/preprocessed_data/preprocessed_dev_cspider_natsql.json" \
-    --db_path "./data/CSpider/database" \
+    --db_path "./database" \
     --target_type "natsql"
 
 # preprocess tables.json for natsql

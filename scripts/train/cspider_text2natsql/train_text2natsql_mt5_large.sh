@@ -25,7 +25,7 @@ python -u evaluate_text2sql_ckpts.py \
     --mode eval \
     --dev_filepath "./data/preprocessed_data/resdsql_dev_cspider_natsql.json" \
     --original_dev_filepath "./data/CSpider/dev.json" \
-    --db_path "./data/CSpider/database" \
+    --db_path "./database" \
     --tables_for_natsql "./data/preprocessed_data/cspider_tables_for_natsql.json" \
     --num_beams 8 \
     --num_return_sequences 8 \
