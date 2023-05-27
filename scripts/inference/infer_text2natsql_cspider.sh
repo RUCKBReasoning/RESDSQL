@@ -5,12 +5,12 @@ tables_for_natsql="./data/preprocessed_data/test_tables_for_natsql.json"
 
 if [ $1 = "base" ]
 then
-    echo "We currently only provide 3B checkpoints on CSpider."
-    exit
+    text2natsql_model_save_path="./models/text2natsql-mt5-base-cspider/checkpoint-32448"
+    text2natsql_model_bs=16
 elif [ $1 = "large" ]
 then
-    echo "We currently only provide 3B checkpoints on CSpider."
-    exit
+    text2natsql_model_save_path="./models/text2natsql-mt5-large-cspider/checkpoint-73691"
+    text2natsql_model_bs=8
 elif [ $1 = "3b" ]
 then
     text2natsql_model_save_path="./models/text2natsql-mt5-xl-cspider/checkpoint-167433"

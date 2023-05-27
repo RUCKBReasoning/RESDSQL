@@ -73,8 +73,10 @@ Notice: We also employed the modified test suite script (see this [issue](https:
 | Model | EM | EXEC | 
 | ----- | -- | ---- | 
 | RESDSQL-3B+NatSQL | **66.3%** | **81.1%** | 
+| RESDSQL-Large+NatSQL | 64.3% | 81.1% | 
 | LGESQL + GTL + Electra + QT | 64.0% | - |
 | LGESQL + ELECTRA + QT | 64.5% | - |
+| RESDSQL-Base+NatSQL | 61.7% | 78.1% | 
 
 
 ## Prerequisites
@@ -137,6 +139,8 @@ Then, you should download T5 (for Spider) or mT5 (for CSpider) checkpoints:
 | text2natsql-t5-base | [Google Drive link](https://drive.google.com/file/d/1QyfSfHHrxfIM5X9gKUYNr_0ZRVvb1suV/view?usp=share_link) | [Link](https://pan.baidu.com/s/1XegaZFvXuZ_jf3P-9YPQCQ) (pwd: pyxf) |
 | text2sql-t5-base | [Google Drive link](https://drive.google.com/file/d/1lqZ81f_fSZtg6BRcRw1-Ol-RJCcKRsmH/view?usp=sharing) | [Link](https://pan.baidu.com/s/1-6H7zStq0WCJHTjDuVspoQ) (pwd: wuek) |
 | text2natsql-mt5-xl-cspider (trained on CSpider) | - | [Link](https://pan.baidu.com/s/1tFkGOiw5ETB83-Ct3MuVXA) (pwd: y7ei) |
+| text2natsql-mt5-large-cspider (trained on CSpider) | - | [Link](https://pan.baidu.com/s/1LUjL-2nwNfUJhzI3cm7aEQ) (pwd: ydqk) |
+| text2natsql-mt5-base-cspider (trained on CSpider) | - | [Link](https://pan.baidu.com/s/1tbEUIBPUTA2Oz7K2lHT9oA) (pwd: d8b8) |
 
 The checkpoints should be placed in the `models` folder. 
 
@@ -157,7 +161,7 @@ We also provide inference scripts to run RESDSQL-{Base, Large, 3B}+NatSQL on CSp
 ```sh
 sh scripts/inference/infer_text2natsql_cspider.sh 3b
 ```
-The first argument (model scale) can be selected from `[base, large, 3b]`. Note that `base` and `large` will be released soon, for now, we only support `3b`.
+The first argument (model scale) can be selected from `[base, large, 3b]`.
 
 ## Training on Spider
 We provide scripts in `scripts/train/text2natsql` and `scripts/train/text2sql` to train RESDSQL on Spider's training set and evaluate on Spider's dev set.
