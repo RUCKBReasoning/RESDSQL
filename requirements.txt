@@ -10,5 +10,5 @@ sql_metadata==2.6.0
 sqlparse==0.4.2
 tokenizers==0.11.6
 tqdm==4.63.0
-transformers==4.17.0
+transformers==4.28.1
 tensorboard==2.8.0
