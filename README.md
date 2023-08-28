@@ -18,7 +18,9 @@ If this repository could help you, please cite the following paper:
 ```
 
 `Update (2023.3.13):` We evaluated our method on a diagnostic evaluation benchmark, [Dr.Spider](https://github.com/awslabs/diagnostic-robustness-text-to-sql), which contains 17 test sets to measure the robustness of Text-to-SQL parsers under different perturbation perspectives.
+
 `Update (2023.5.19):` We added support for [CSpider](https://taolusi.github.io/CSpider-explorer/), a Chinese Text-to-SQL benchmark with Chinese questions, English database schema, and corresponding SQL queries.
+
 `Update (2023.8.28):` Please check out our recent work [CodeS](https://github.com/RUCKBReasoning/codes), a series of Code LLMs (CodeS-1B, CodeS-3B, CodeS-7B, and CodeS-15B) specifically optimized for SQL generation. You can choose the model that best suits your computational resources and application needs to develop your Text-to-SQL parser!!
  
 ## Overview
