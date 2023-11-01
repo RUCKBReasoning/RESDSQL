@@ -20,6 +20,8 @@ If this repository could help you, please cite the following paper:
 `Update (2023.3.13):` We evaluated our method on a diagnostic evaluation benchmark, [Dr.Spider](https://github.com/awslabs/diagnostic-robustness-text-to-sql), which contains 17 test sets to measure the robustness of Text-to-SQL parsers under different perturbation perspectives.
 
 `Update (2023.5.19):` We added support for [CSpider](https://taolusi.github.io/CSpider-explorer/), a Chinese Text-to-SQL benchmark with Chinese questions, English database schema, and corresponding SQL queries.
+
+`Update (2023.11.1):` We are excited to present our text-to-SQL demo, available at https://github.com/RUCKBReasoning/text2sql-demo. This demo showcases the capabilities of our newly developed pre-trained language model, which has been specifically tailored for text-to-SQL tasks. Additionally, we have included comprehensive instructions on how to build the demo using your own databases. We encourage you to experiment with it and explore its features! 🔥
  
 ## Overview
 We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficuty of Text-to-SQL. More details can be found in our [paper](https://arxiv.org/abs/2302.05965). All experiments are conducted on a single NVIDIA A100 80G GPU.
