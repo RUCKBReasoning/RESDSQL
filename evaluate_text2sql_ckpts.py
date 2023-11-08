@@ -53,34 +53,20 @@ if __name__ == "__main__":
 
     eval_results = []
     for ckpt_name in ckpt_names:
-        # if the current ckpt is being evaluated or has already been evaluated
-        if "{}.txt".format(ckpt_name) in os.listdir(opt.eval_results_path):
-            # is being evaluated
-            with open(opt.eval_results_path+"/{}.txt".format(ckpt_name), "r") as f:
-                if len(f.readlines()) == 1:
-                    continue
-            # has already been evaluated
-            with open(opt.eval_results_path+"/{}.txt".format(ckpt_name), "r") as f:
-                eval_result = json.load(f)
-                eval_results.append(eval_result)
-        # otherwise, we start evaluating the current ckpt
-        else:
-            print("Start evaluating ckpt: {}".format(ckpt_name))
-            with open(opt.eval_results_path+"/{}.txt".format(ckpt_name), "w") as f:
-                f.write("Evaluating...")
-            
-            opt.save_path = save_path + "/{}".format(ckpt_name)
-            em, exec = _test(opt)
-            
-            eval_result = dict()
-            eval_result["ckpt"] = opt.save_path
-            eval_result["EM"] = em
-            eval_result["EXEC"] = exec
+        print("Start evaluating ckpt: {}".format(ckpt_name))
+        
+        opt.save_path = save_path + "/{}".format(ckpt_name)
+        em, exec = _test(opt)
+        
+        eval_result = dict()
+        eval_result["ckpt"] = opt.save_path
+        eval_result["EM"] = em
+        eval_result["EXEC"] = exec
 
-            with open(opt.eval_results_path+"/{}.txt".format(ckpt_name), "w") as f:
-                f.write(json.dumps(eval_result, indent = 2, ensure_ascii = False))
-            
-            eval_results.append(eval_result)
+        with open(opt.eval_results_path+"/{}.txt".format(ckpt_name), "w") as f:
+            f.write(json.dumps(eval_result, indent = 2, ensure_ascii = False))
+        
+        eval_results.append(eval_result)
     
     for eval_result in eval_results:
         print("ckpt name:", eval_result["ckpt"])
