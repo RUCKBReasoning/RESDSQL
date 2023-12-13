@@ -149,7 +149,8 @@ def _train(opt):
     train_step = 0
     for epoch in range(opt.epochs):
         print(f"This is epoch {epoch+1}.")
-        for batch in train_dataloder:
+        pbar = tqdm(train_dataloder)
+        for batch in pbar:
             train_step += 1
             
             batch_inputs = [data[0] for data in batch]
@@ -157,11 +158,11 @@ def _train(opt):
             batch_db_ids = [data[2] for data in batch] # unused
             batch_tc_original = [data[3] for data in batch] # unused
             
-            if epoch == 0:
-                for batch_id in range(len(batch_inputs)):
-                    print(batch_inputs[batch_id])
-                    print(batch_sqls[batch_id])
-                    print("----------------------")
+            # if epoch == 0:
+            #     for batch_id in range(len(batch_inputs)):
+            #         print(batch_inputs[batch_id])
+            #         print(batch_sqls[batch_id])
+            #         print("----------------------")
 
             tokenized_inputs = text2sql_tokenizer(
                 batch_inputs, 
@@ -212,6 +213,8 @@ def _train(opt):
                 writer.add_scalar('train loss', loss.item(), train_step)
                 # record learning rate (tensorboard)
                 writer.add_scalar('train lr', optimizer.state_dict()['param_groups'][0]['lr'], train_step)
+            
+            pbar.set_description(f"train loss: {loss.item():.4f}, lr: {optimizer.state_dict()['param_groups'][0]['lr']:.6f}")
 
             if train_step % opt.gradient_descent_step == 0:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
