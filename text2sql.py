@@ -24,7 +24,7 @@ def parse_option():
                         help = 'input batch size.')
     parser.add_argument('--gradient_descent_step', type = int, default = 4,
                         help = 'perform gradient descent per "gradient_descent_step" steps.')
-    parser.add_argument('--device', type = str, default = "2",
+    parser.add_argument('--device', type = str, default = "0",
                         help = 'the id of used GPU device.')
     parser.add_argument('--learning_rate',type = float, default = 3e-5,
                         help = 'learning rate.')
@@ -81,7 +81,7 @@ def _train(opt):
     else:
         writer = None
 
-    os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
+    # os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
 
     text2sql_tokenizer = T5TokenizerFast.from_pretrained(
         opt.model_name_or_path,

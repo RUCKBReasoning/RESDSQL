@@ -190,7 +190,7 @@ def _train(opt):
     else:
         writer = None
 
-    os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
+    # os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
 
     tokenizer_class = XLMRobertaTokenizerFast if "xlm" in opt.model_name_or_path else RobertaTokenizerFast
 
@@ -373,7 +373,7 @@ def _train(opt):
 
 def _test(opt):
     set_seed(opt.seed)
-    os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
+    # os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
 
     tokenizer_class = XLMRobertaTokenizerFast if "xlm" in opt.model_name_or_path else RobertaTokenizerFast
     
