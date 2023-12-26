@@ -9,6 +9,14 @@ python preprocessing.py \
     --db_path "./database" \
     --target_type "sql"
 
+python preprocessing.py \
+    --mode "train" \
+    --table_path "./data/spider/tables.json" \
+    --input_dataset_path "./data/spider/train.json" \
+    --output_dataset_path "./data/preprocessed_data/preprocessed_train.json" \
+    --db_path "./database" \
+    --target_type "sql"
+
 # preprocess dev dataset
 python preprocessing.py \
     --mode "eval" \

@@ -64,9 +64,9 @@ def parse_option():
     parser.add_argument('--num_return_sequences', type = int, default = 8,
                         help = 'the number of returned sequences in model.generate() function (num_return_sequences <= num_beams).')
     parser.add_argument("--target_type", type = str, default = "sql",
-                help = "sql or natsql.")
+                        help = "sql or natsql.")
     parser.add_argument("--output", type = str, default = "predicted_sql.txt",
-                help = "save file of the predicted sqls.")
+                        help = "save file of the predicted sqls.")
     
     opt = parser.parse_args()
 
@@ -165,21 +165,21 @@ def _train(opt):
             #         print("----------------------")
 
             tokenized_inputs = text2sql_tokenizer(
-                batch_inputs, 
-                padding = "max_length",
-                return_tensors = "pt",
-                max_length = 512,
-                truncation = True
+                batch_inputs,
+                padding="max_length",
+                return_tensors="pt",
+                max_length=512,
+                truncation=True
             )
             
-            with text2sql_tokenizer.as_target_tokenizer():
-                tokenized_outputs = text2sql_tokenizer(
-                    batch_sqls, 
-                    padding = "max_length", 
-                    return_tensors = 'pt',
-                    max_length = 256,
-                    truncation = True
-                )
+            # with text2sql_tokenizer.as_target_tokenizer():
+            tokenized_outputs = text2sql_tokenizer(
+                text_target=batch_sqls,
+                padding="max_length",
+                return_tensors='pt',
+                max_length=256,
+                truncation=True
+            )
             
             encoder_input_ids = tokenized_inputs["input_ids"]
             encoder_input_attention_mask = tokenized_inputs["attention_mask"]
@@ -234,7 +234,7 @@ def _test(opt):
     import time
     start_time = time.time()
     
-    os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
+    # os.environ["CUDA_VISIBLE_DEVICES"] = opt.device
     
     if opt.target_type == "natsql":
         tables = json.load(open(opt.tables_for_natsql,'r'))

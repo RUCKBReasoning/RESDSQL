@@ -1,0 +1,35 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train",
+            "env": {"CUDA_VISIBLE_DEVICES":"7"},
+            "type": "python",
+            "request": "launch",
+            "program": "text2sql.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": ["--batch_size", "16", 
+                     "--gradient_descent_step", "2", 
+                     "--learning_rate", "1e-4",
+                     "--epochs", "128",
+                     "--seed", "42",
+                     "--save_path", "./models/text2sql-t5-base-additional",
+                     "--tensorboard_save_path", "./tensorboard_log/text2sql-t5-base-additional",
+                     "--model_name_or_path", "./llm/t5-base",
+                     "--use_adafactor", "--mode", "train",
+                     "--train_filepath", "./data/preprocessed_data/resdsql_train.json"]
+        },
+        {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

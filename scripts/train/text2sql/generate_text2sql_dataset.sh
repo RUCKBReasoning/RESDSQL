@@ -13,6 +13,18 @@ python text2sql_data_generator.py \
     --output_skeleton \
     --target_type "sql"
 
+python text2sql_data_generator.py \
+    --input_dataset_path "./data/preprocessed_data/preprocessed_train.json" \
+    --output_dataset_path "./data/preprocessed_data/resdsql_train.json" \
+    --topk_table_num 4 \
+    --topk_column_num 5 \
+    --mode "train" \
+    --noise_rate 0.2 \
+    --use_contents \
+    --add_fk_info \
+    --output_skeleton \
+    --target_type "sql"
+
 # predict probability for each schema item in the eval set
 python schema_item_classifier.py \
     --batch_size 32 \
