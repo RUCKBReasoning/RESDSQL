@@ -13,3 +13,6 @@ tqdm==4.63.0
 transformers==4.28.1
 tensorboard==2.8.0
 sentencepiece==0.1.99
+argparse
+scikit-learn
+func-timeout
