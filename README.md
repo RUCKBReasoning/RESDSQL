@@ -21,10 +21,13 @@ If this repository could help you, please cite the following paper:
 
 `Update (2023.5.19):` We added support for [CSpider](https://taolusi.github.io/CSpider-explorer/), a Chinese Text-to-SQL benchmark with Chinese questions, English database schema, and corresponding SQL queries.
 
-`Update (2023.11.1):` We are excited to present our text-to-SQL demo, available at https://github.com/RUCKBReasoning/text2sql-demo. This demo showcases the capabilities of our newly developed pre-trained language model, which has been specifically tailored for text-to-SQL tasks. Additionally, we have included comprehensive instructions on how to build the demo using your own databases. We encourage you to experiment with it and explore its features! 🔥
+`Update (2023.11.1):` We are excited to present our text-to-SQL demo, available at https://github.com/RUCKBReasoning/text2sql-demo. This demo showcases the capabilities of our newly developed pre-trained language model CodeS, which has been specifically tailored for text-to-SQL tasks. Additionally, we have included comprehensive instructions on how to build the demo using your databases. We encourage you to experiment with it and explore its features! 🔥
+
+ `Update (2024.4.12):` We are thrilled to announce that our latest work, CodeS, has been accepted by SIGMOD 2024. CodeS represents a significant advancement over RESDSQL, incorporating a more powerful language model. We also re-developed the schema filter to make it easy to use. For an in-depth look at CodeS, please consult our paper available at [CodeS-paper](https://arxiv.org/abs/2402.16347). Additionally, we have made the source code publicly available at [CodeS-code](https://github.com/RUCKBReasoning/codes) for community use and feedback.
  
+
 ## Overview
-We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficuty of Text-to-SQL. More details can be found in our [paper](https://arxiv.org/abs/2302.05965). All experiments are conducted on a single NVIDIA A100 80G GPU.
+We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficulty of Text-to-SQL. More details can be found in our [paper](https://arxiv.org/abs/2302.05965). All experiments are conducted on a single NVIDIA A100 80G GPU.
 
 ## Evaluation Results
 We evaluate RESDSQL on six benchmarks: Spider, Spider-DK, Spider-Syn, Spider-Realistic, Dr.Spider, and CSpider. We adopt two metrics: Exact-set-Match accuracy (EM) and EXecution accuracy (EX). Let's look at the following numbers:
